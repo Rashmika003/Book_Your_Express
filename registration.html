@@ -1,98 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/62fff06bf6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://kit.fontawesome.com/62fff06bf6.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">>
-    <link rel="stylesheet" href="CSS/bootstrap-additonal.css">
-    <link rel="stylesheet" href="CSS/forms-reg.css">
-    <title>Register</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/62fff06bf6.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://kit.fontawesome.com/62fff06bf6.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  >
+  <link rel="stylesheet" href="CSS/bootstrap-additonal.css" />
+  <link rel="stylesheet" href="CSS/forms-reg.css" />
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+  <!-- jquery-3 -->
+  <title>Register</title>
+
+  <style>
+    /* styles for error messages */
+    .error{
+      margin: 0px;
+      color: red;
+      display: none;
+    }
+  </style>
 </head>
+
 <body class="background">
-    <script src="bootstrap/bootstrap.js"></script> 
- 
-     <nav class="navbar navbar-expand-lg">
-         <div class="container-fluid">
-             <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paper-plane"></i>
-             COMPANY NAME</a>
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                   <li class="nav-item">
-                     <a class="nav-link " aria-current="page" href="index.html"> <!-- ****icon link goes here**** </i>-->Home</a> 
-                   </li>
-                   <li class="nav-item">
-                     <a class="nav-link active" href="login.html"><!-- ****icon link goes here****</i>-->Login</a>
-                   </li>
-                   <li class="nav-item">
-                     <a class="nav-link" href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
-                   </li>
-                   <li class="nav-item">
-                     <a class="nav-link" href="ticketing.html"><!-- ****icon link goes here****</i>-->Book Tickets</a>
-                   </li>
-                   <li class="nav-item">
-                     <a class="nav-link last-child" href="contactUs.html" ><!-- ****icon link goes here****</i>-->Contact Us</a>
-                   </li>
-                 </ul> 
-               </div>
-         </div>
-     </nav>
-    
-     <div class="container-form">
+  <script src="bootstrap/bootstrap.js"></script>
 
-      <div class="title text-center">SIGN UP</div>
-      <div class="content">
-          <form>
-              <div class="user-details">
-                  <div class="input-box">
-                      <span class="details">Full Name</span>
-                      <input type="text" placeholder="Enter your name" required>
-
-                      <span class="details">Username</span>
-                      <input type="text" placeholder="Enter your username" required>
-
-                      <span class="details">Email</span>
-                      <input type="text" placeholder="Enter your email" required>
-
-                      <span class="details">Phone Number</span>
-                      <input type="text" placeholder="Enter your number" required>
-
-                      <span class="details">Password</span>
-                      <input type="text" placeholder="Enter your password" required>
-
-                      <span class="details">Confirm Password</span>
-                      <input type="text" placeholder="Confirm your password" required>
-                  </div>
-              </div>
-              <div class="button">
-                  <input type="submit" value="Register">
-              </div>
-          </form>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paper-plane"></i> COMPANY NAME</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">
+              <!-- ****icon link goes here**** </i>-->Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="login.html"><!-- ****icon link goes here****</i>-->Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ticketing.html"><!-- ****icon link goes here****</i>-->Book Tickets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link last-child" href="contactUs.html"><!-- ****icon link goes here****</i>-->Contact Us</a>
+          </li>
+        </ul>
       </div>
+    </div>
+  </nav>
+
+  <div class="container-form">
+    <div class="title text-center h1">SIGN UP</div>
+    <div class="content">
+      <form name="signinForm">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required minlength="5" />
+            <!-- Erorr messages for full name section -->
+            <p class="error" id="FullNameError1"></p>
+
+            <p class="error" id="FullNameError2"></p>
+            <p class="error" id="FullNameError3"></p>
+
+            <span class="details">Username</span>
+            <input id="userName" type="text" name="userName" placeholder="Enter your username" required minlength="5" />
+            <!-- Erorr message for user name section -->
+            <p class="error" id="userNameError1"></p>
+            <p class="error" id="userNameError2"></p>
+            <p class="error" id="userNameError3"></p>
+
+            <span class="details">Email</span>
+            <input type="email" name="email" placeholder="Enter your email" required />
+
+            <span class="details">Phone Number</span>
+            <input type="number" name="phoneNumber" placeholder="Enter your number" required minlength="10" />
+
+            <span class="details">Password</span>
+            <input type="password" name="password1" placeholder="Enter your password" required minlength="8" />
+
+            <span class="details">Confirm Password</span>
+            <input type="password" name="password2" placeholder="Confirm your password" required minlength="8" />
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Register" />
+        </div>
+      </form>
+    </div>
   </div>
 
-     <section id="footer">
-        <div class="container">
-          <footer class="py-5 my-4 end-footer">
-            <ul class="nav justify-content-center pb-3 mb-3 borders" >
-                <li class="nav-item foot-items"><a href="index.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-house"></i>Home</a></li>
-                <li class="nav-item foot-items"><a href="login.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-viruses"></i>Log In</a></li>
-                <li class="nav-item foot-items"><a href="destinations.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-money-check-dollar"></i>Destinations</a></li>
-                <li class="nav-item foot-items"><a href="ticketing.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-circle-question"></i>Book Tickets</a></li>
-                <li class="nav-item foot-items"><a href="contactUs.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-circle-info"></i>Contact Us</a></li>
-            </ul>
-            <p class="text-center copyrights">
-              Lorem ipsum 
-              <i class="fa-regular fa-copyright"></i>  <br> dolor sit amet consectetur adipisicing elit. Assumenda vel ullam   
-            </p>
-          </footer>
-        </div>
-      </section>
+  <section id="footer">
+    <div class="container">
+      <footer class="py-5 my-4 end-footer">
+        <ul class="nav justify-content-center pb-3 mb-3 borders">
+          <li class="nav-item foot-items">
+            <a href="index.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon fa-house"></i>Home</a>
+          </li>
+          <li class="nav-item foot-items">
+            <a href="login.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon fa-viruses"></i>Log In</a>
+          </li>
+          <li class="nav-item foot-items">
+            <a href="destinations.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon fa-money-check-dollar"></i>Destinations</a>
+          </li>
+          <li class="nav-item foot-items">
+            <a href="ticketing.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon fa-circle-question"></i>Book
+              Tickets</a>
+          </li>
+          <li class="nav-item foot-items">
+            <a href="contactUs.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon fa-circle-info"></i>Contact
+              Us</a>
+          </li>
+        </ul>
+        <p class="text-center copyrights">
+          Copyright 2023 BookYourExpress. All rights reserved
+          <i class="fa-regular fa-copyright"></i> <br />
+          BookYourExpress.lk is not responsible for any schedule changes,
+          delays, or cancellations due to unforeseen circumstances.
+        </p>
+      </footer>
+    </div>
+  </section>
 
+  <script>
+    $(document).ready(function () {
+      // this JQuery event selector check whether #fullName contains more then
+      // 5 charactors , contains symbols and contains numbers
+      // if symbol or number found in the input, then show() #FullNameError <p> tags
+      $("#fullName").blur(function () {
+        const fName = $(this).val();
+        const symbols = "~!@#$%^&*()_+|?><,./`";
+        const numbers = "1234567890";
+
+        if (fName.length < 5) {
+          $("#FullNameError1").text("Please enter more than 5 letters");
+          $("#FullNameError1").show();
+          document.getElementById("fullName").setCustomValidity("Invalid field."); 
+          //this make fullName <input> invalid psudo class. so form cannot submit
+        } else {
+          $("#FullNameError1").hide();
+          document.getElementById("fullName").setCustomValidity("");
+          //this remove fullName <input> from invalid psudo class. so form can submit
+        }
+
+        for (let i = 0; i < symbols.length; i++) {
+          if (fName.includes(symbols.charAt(i))) {
+            $("#FullNameError2").text("Symboles are not allowed");
+            $("#FullNameError2").show();
+            document.getElementById("fullName").setCustomValidity("Invalid field."); 
+          //this make fullName <input> invalid psudo class. so form cannot submit
+            break;
+          } else {
+            $("#FullNameError2").hide();
+            document.getElementById("fullName").setCustomValidity("");
+          //this remove fullName <input> from invalid psudo class. so form can submit
+          }
+        }
+
+        for (let i = 0; i < numbers.length; i++) {
+          if (fName.includes(numbers.charAt(i))) {
+            $("#FullNameError3").text("Numbers are not allowed");
+            $("#FullNameError3").show();
+            document.getElementById("fullName").setCustomValidity("Invalid field."); 
+          //this make fullName <input> invalid psudo class. so form cannot submit
+            break;
+          } else {
+            $("#FullNameError3").hide();
+            document.getElementById("fullName").setCustomValidity("");
+          //this remove fullName <input> from invalid psudo class. so form can submit
+          }
+        }
+      });
+
+      // this JQuery event selector check whether #userName contains
+      // spaces or string length is greater than 5
+      // if spaces found in the input, then show() #userNameError <p> tags
+      $("#userName").blur(function () {
+        const fName = $(this).val();
+        const symbols = "~!$%^&*()+|?><,./`"; //@#_ only allows
+
+        if (fName.length < 5) {
+          $("#userNameError1").text("Please enter more than 5 letters");
+          $("#userNameError1").show();
+          // if this conditions true, html form validation itself do not let form to submit since minValue = 5;.
+        } else {
+          $("#userNameError1").hide();
+        }
+
+        for (let i = 0; i < symbols.length; i++) {
+          if (fName.includes(symbols.charAt(i))) {
+            $("#userNameError2").text("Only '@', '#', '_' are allowed");
+            $("#userNameError2").show();
+            document.getElementById("userName").setCustomValidity("Invalid field."); 
+          //this make userName <input> invalid psudo class. so form cannot submit
+            break;
+          } else {
+            $("#userNameError2").hide();
+            document.getElementById("userName").setCustomValidity("");
+          //this remove userName <input> from invalid psudo class. so form can submit
+          }
+        }
+
+        if (fName.includes(" ")) {
+          $("#userNameError3").text("Spaces are not allowed");
+          $("#userNameError3").show();
+          document.getElementById("userName").setCustomValidity("Invalid field."); 
+          //this make userName <input> invalid psudo class. so form cannot submit
+        } else {
+          $("#userNameError3").hide();
+          document.getElementById("fullName").setCustomValidity("");
+          //this remove userName <input> from invalid psudo class. so form can submit
+        }
+      });
+    });
+  </script>
 </body>
+
 </html>
