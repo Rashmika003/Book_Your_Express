@@ -17,14 +17,6 @@
   <!-- jquery-3 -->
   <title>Register</title>
 
-  <style>
-    /* styles for error messages */
-    .error{
-      margin: 0px;
-      color: red;
-      display: none;
-    }
-  </style>
 </head>
 
 <body class="background">
@@ -82,13 +74,28 @@
             <p class="error" id="userNameError3"></p>
 
             <span class="details">Email</span>
-            <input type="email" name="email" placeholder="Enter your email" required />
+            <input id="email" type="email" name="email" placeholder="Enter your email" required />
+            <p class="error" id="emailError1"></p><!-- Erorr message for email -->
 
             <span class="details">Phone Number</span>
-            <input type="number" name="phoneNumber" placeholder="Enter your number" required minlength="10" />
+            <input id="phoneNumber" type="number" name="phoneNumber" placeholder="Enter your number" required minlength="10" />
+            <p class="error" id="phoneNoError1"></p><!-- Erorr message for phone number -->
 
             <span class="details">Password</span>
-            <input type="password" name="password1" placeholder="Enter your password" required minlength="8" />
+            <input id="password" type="password" name="password1" placeholder="Enter your password" required minlength="8" />
+            <div class="passwordDetails">
+              
+              <div id="showAndHide">
+                <p class="passwordShowAndHide" id="showPassword">show password</p> <!-- click this to show password -->
+                <p class="passwordShowAndHide" id="hidePassword">hide password</p> <!-- click this to hide password -->
+              </div>
+              
+              <!-- to indicate password -->
+              <p class="passswordStrogness" id="weakPassword">Weak Password</p> 
+              <p class="passswordStrogness" id="strongPassword">Strong Password</p>
+              <p class="passswordStrogness" id="veryStrongPassword">Very Strong Password</p>
+            </div>
+            <p class="error" id="passwordError1"></p><!-- Erorr message for Password -->
 
             <span class="details">Confirm Password</span>
             <input type="password" name="password2" placeholder="Confirm your password" required minlength="8" />
@@ -228,8 +235,143 @@
           //this remove userName <input> from invalid psudo class. so form can submit
         }
       });
+
+      // validation for email
+      $("#email").blur(function(){
+        const emailInput = $(this).val();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email validation regular expression
+        
+        if(!emailRegex.test(emailInput)){  //check reguler expression and if match this .test() returns ture
+          $("#emailError1").text("Email is not valid");
+          $("#emailError1").show();
+          document.getElementById("email").setCustomValidity("Invalid field."); 
+          //this make email <input> invalid psudo class. so form cannot submit
+        }
+        else{
+          $("#emailError1").hide();
+          document.getElementById("email").setCustomValidity("");
+          //this remove email <input> from invalid psudo class. so form can submit
+        }
+    }); 
+
+    // validation for phone number
+    $("#phoneNumber").blur(function(){
+      const pNumber = $(this).val();
+      if(pNumber.length < 10){   //check length
+        $("#phoneNoError1").text("phone number is short");
+        $("#phoneNoError1").show();
+        document.getElementById("phoneNumber").setCustomValidity("Invalid field."); 
+          //this make phoneNumber <input> invalid psudo class. so form cannot submit
+      }
+      else{
+        $("#phoneNoError1").hide();
+        document.getElementById("phoneNumber").setCustomValidity("");
+          //this remove phoneNumber <input> from invalid psudo class. so form can submit
+      }
     });
+
+    // check 1st password
+    $("#password").on({
+      keyup:function(){
+        PasswordChecker();
+      },
+      blur:function(){
+        PasswordChecker();
+      }
+    });
+
+    function PasswordChecker(){
+      const passWord1 = $("#password").val();
+      let includeSymbols = false;
+      let includeNumbers = false;
+
+      const symbols = "~!@#$%^&*()_+|?><,./`";
+      const numbers = "1234567890";
+      
+      //password length checke
+      if (passWord1.length < 8) {
+        $("#passwordError1").text("Minimum length is 8 charactors");
+        $("#passwordError1").show();
+      } else {
+        $("#passwordError1").hide();
+      }
+
+      //set "includeSymboles" to ture if password1 has any symboles
+      for (let i = 0; i < symbols.length; i++) {
+        if (passWord1.includes(symbols.charAt(i))) {
+          includeSymbols = true;
+          break;
+        } else {
+          includeSymbols = false;
+        }
+      }
+      //set "incluneNumbers" to true if password1 has any numbers
+      for (let i = 0; i < numbers.length; i++) {
+        if (passWord1.includes(numbers.charAt(i))) {
+          includeNumbers = true;
+          break;
+        } else {
+          includeNumbers = false;
+        }
+      }
+
+      // if password1 do not has any symboles or numbers, #weekpassword is show()
+      if(!includeSymbols && !includeNumbers){
+        $("#weakPassword").show();
+        $("#strongPassword").hide();
+        $("#veryStrongPassword").hide();
+      }
+
+      // if password1  has any symboles or numbers, #strongPassword is show()
+      if(includeSymbols || includeNumbers){
+        $("#weakPassword").hide();
+        $("#strongPassword").show();
+        $("#veryStrongPassword").hide();
+      }
+
+      // if password1 has any symboles and any number, #veryStrongPassword is show()
+      if(includeSymbols && includeNumbers){
+        $("#weakPassword").hide();
+        $("#strongPassword").hide();
+        $("#veryStrongPassword").show();
+      }
+    };
+
+
+    //=====================================under developing stage===============================================================
+
+    // password show and hide when click the "show password" or "hide password"
+    
+    $("#showAndHide").click(function(){
+      showAndHidePassword();
+    }); 
+    let isShowAndHideClicked = false;
+    function showAndHidePassword(){
+      if(!isShowAndHideClicked){
+          $("#showPassword").show();
+          $("#hidePassword").hide();
+          isShowAndHideClicked = true;
+        }
+        if(isShowAndHideClicked){
+          $("#showPassword").hide();
+          $("#hidePassword").show();
+          isShowAndHideClicked = false;
+        }
+    };
+
+
+      //!!!!!!!!!! show hide buttones are not working. find a way to make them work
+
+
+
+
+  });//end of documet.redy ()
+
   </script>
+
 </body>
 
 </html>
+
+
+

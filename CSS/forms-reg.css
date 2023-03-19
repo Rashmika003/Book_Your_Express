@@ -120,3 +120,51 @@ form .button {
         transition: .3s;
     }
 
+
+    /* <<<<<<<<<<<< Styles for form validation part >>>>>>>>>>>>>*/
+
+/* styles for error messages */
+.error{
+    margin: 0px;
+    color: red;
+    display: none;
+    font-size: small;
+  }
+
+.passwordShowAndHide{
+    margin: 0px 0px 0px 10px;
+    font-size: small;
+    font-family: "Open Sans", sans-serif;
+}
+
+#hidePassword{
+    display: none;
+}
+
+.passswordStrogness{
+    margin: 0px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: small;
+    display: none;
+}
+
+.passwordDetails{
+    display: flex;
+    justify-content: space-between
+}
+
+#weakPassword{
+    /* display: block; */
+    color: red;
+}
+
+#strongPassword{
+    color: rgb(31, 145, 251);
+    /* display: block; */
+}
+
+#veryStrongPassword{
+    color: rgb(31, 255, 31);
+    /* display: block; */
+}
+
