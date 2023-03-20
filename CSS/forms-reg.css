@@ -137,7 +137,11 @@ form .button {
     font-family: "Open Sans", sans-serif;
 }
 
-#hidePassword{
+#hidePassword1{
+    display: none;
+}
+
+#hidePassword2{
     display: none;
 }
 
@@ -167,4 +171,16 @@ form .button {
     color: rgb(31, 255, 31);
     /* display: block; */
 }
+
+.showHide{
+    cursor: pointer;
+}
+
+/* hide arrow in number type input*/
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
 

@@ -85,12 +85,12 @@
             <input id="password" type="password" name="password1" placeholder="Enter your password" required minlength="8" />
             <div class="passwordDetails">
               
-              <div id="showAndHide">
-                <p class="passwordShowAndHide" id="showPassword">show password</p> <!-- click this to show password -->
-                <p class="passwordShowAndHide" id="hidePassword">hide password</p> <!-- click this to hide password -->
+              <div class="showHide" id="showAndHide">
+                <p class="passwordShowAndHide" id="showPassword1">show password</p> <!-- click this to show password -->
+                <p class="passwordShowAndHide" id="hidePassword1">hide password</p> <!-- click this to hide password -->
               </div>
               
-              <!-- to indicate password -->
+              <!-- to indicate password strength -->
               <p class="passswordStrogness" id="weakPassword">Weak Password</p> 
               <p class="passswordStrogness" id="strongPassword">Strong Password</p>
               <p class="passswordStrogness" id="veryStrongPassword">Very Strong Password</p>
@@ -98,11 +98,18 @@
             <p class="error" id="passwordError1"></p><!-- Erorr message for Password -->
 
             <span class="details">Confirm Password</span>
-            <input type="password" name="password2" placeholder="Confirm your password" required minlength="8" />
+            <input id="password2" type="password" name="password2" placeholder="Confirm your password" required minlength="8" />
+            
+            <div class="showHide" id="showAndHide2">
+              <p class="passwordShowAndHide" id="showPassword2">show password</p> <!-- click this to show password -->
+              <p class="passwordShowAndHide" id="hidePassword2">hide password</p> <!-- click this to hide password -->
+            </div>
+            <p class="error" id="password2Error"></p><!-- Erorr message for Password2 -->
+
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Register" />
+          <input id="submitButton" type="submit" value="Register" />
         </div>
       </form>
     </div>
@@ -147,6 +154,9 @@
 
   <script>
     $(document).ready(function () {
+
+      //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< full name >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
       // this JQuery event selector check whether #fullName contains more then
       // 5 charactors , contains symbols and contains numbers
       // if symbol or number found in the input, then show() #FullNameError <p> tags
@@ -195,6 +205,8 @@
         }
       });
 
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< user name >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
       // this JQuery event selector check whether #userName contains
       // spaces or string length is greater than 5
       // if spaces found in the input, then show() #userNameError <p> tags
@@ -236,6 +248,8 @@
         }
       });
 
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< email >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
       // validation for email
       $("#email").blur(function(){
         const emailInput = $(this).val();
@@ -254,6 +268,8 @@
         }
     }); 
 
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< phone number >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     // validation for phone number
     $("#phoneNumber").blur(function(){
       const pNumber = $(this).val();
@@ -270,6 +286,8 @@
       }
     });
 
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 1st password >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     // check 1st password
     $("#password").on({
       keyup:function(){
@@ -284,6 +302,7 @@
       const passWord1 = $("#password").val();
       let includeSymbols = false;
       let includeNumbers = false;
+      let includeLetters = /[a-zA-Z]/.test(passWord1)
 
       const symbols = "~!@#$%^&*()_+|?><,./`";
       const numbers = "1234567890";
@@ -322,8 +341,8 @@
         $("#veryStrongPassword").hide();
       }
 
-      // if password1  has any symboles or numbers, #strongPassword is show()
-      if(includeSymbols || includeNumbers){
+      // if password1  has any symboles or numbers, with letters #strongPassword is show()
+      if(includeLetters && (includeSymbols || includeNumbers)){
         $("#weakPassword").hide();
         $("#strongPassword").show();
         $("#veryStrongPassword").hide();
@@ -336,32 +355,100 @@
         $("#veryStrongPassword").show();
       }
     };
-
-
-    //=====================================under developing stage===============================================================
-
-    // password show and hide when click the "show password" or "hide password"
     
+    
+    //event listner for "show password" and "hide password"
     $("#showAndHide").click(function(){
-      showAndHidePassword();
+      showAndHidePassword1();
     }); 
-    let isShowAndHideClicked = false;
-    function showAndHidePassword(){
-      if(!isShowAndHideClicked){
-          $("#showPassword").show();
-          $("#hidePassword").hide();
-          isShowAndHideClicked = true;
+
+    let isShowAndHideClicked1 = false; //default value
+
+    function showAndHidePassword1(){
+      const password1 = document.getElementById("password");
+      if(!isShowAndHideClicked1){    // run if isShowAndHideClicked == false
+          $("#showPassword1").hide();
+          $("#hidePassword1").show();
+          isShowAndHideClicked1 = true;
+          password1.setAttribute("type","text"); 
+          return;
         }
-        if(isShowAndHideClicked){
-          $("#showPassword").hide();
-          $("#hidePassword").show();
-          isShowAndHideClicked = false;
-        }
+      if(isShowAndHideClicked1){
+        $("#showPassword1").show();
+        $("#hidePassword1").hide();
+        isShowAndHideClicked1 = false;
+        password1.setAttribute("type","password");
+        return;
+      }
     };
 
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 2nd password >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-      //!!!!!!!!!! show hide buttones are not working. find a way to make them work
+    //event listner for "show password" and "hide password" in 2nd password
+    $("#showAndHide2").click(function(){
+      showAndHidePassword2();
+    }); 
 
+    let isShowAndHideClicked2 = false; //default value
+
+    function showAndHidePassword2(){
+      const password2 = document.getElementById("password2");
+      if(!isShowAndHideClicked2){    // run if isShowAndHideClicked == false
+          $("#showPassword2").hide();
+          $("#hidePassword2").show();
+          isShowAndHideClicked2 = true;
+          password2.setAttribute("type","text"); 
+          return;
+        }
+      if(isShowAndHideClicked2){
+        $("#showPassword2").show();
+        $("#hidePassword2").hide();
+        isShowAndHideClicked2 = false;
+        password2.setAttribute("type","password");
+        return;
+      }
+    };
+
+    // check  password1 == password2 or not.
+    $("#password2").blur(function(){ 
+      confirmPasswords();
+    }); 
+    $("#password2").keyup(function(){
+      confirmPasswords();
+    }); 
+
+    function confirmPasswords(){
+      const password1 = document.getElementById("password").value;
+      const password2 = document.getElementById("password2").value;
+
+      if(password1 != password2){
+        $("#password2Error").text("Passwords didn't match");
+        $("#password2Error").show();
+        document.getElementById("password").setCustomValidity("Invalid field."); 
+          //this make password <input> invalid psudo class. so form cannot submit
+      }
+      else{
+        $("#password2Error").hide();
+        document.getElementById("password").setCustomValidity("");
+          //this remove password <input> from invalid psudo class. so form can submit
+      }
+    }
+
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< submit button >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    $("#submitButton").hover(function(){
+      //for mouse-enter event
+      const submitButtorn = document.getElementById("submitButton");
+      submitButtorn.style.background = "#f8bc24";
+    }, 
+    function(){
+      //cord for mouse-leave
+      const submitButtorn = document.getElementById("submitButton");
+      submitButtorn.style.background = "white";
+    });
+
+
+ 
 
 
 
