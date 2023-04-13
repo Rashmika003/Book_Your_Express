@@ -2,6 +2,11 @@
     background-color: #051821;
 }
 
+/* .navbar-brand{
+    background-image: url(../logos/logo.png);
+
+} */
+
 .navbar{
     background-color: #f8bc24;
 }
@@ -18,7 +23,7 @@
 
 
 #header{
-    background: url(../resources/bg.png);
+    background: url(../resources/background-index-top.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
@@ -31,6 +36,7 @@
 .head-para{
     padding-top: 50px;
     padding-bottom: 30px;
+    color: #f58800;
 }
 
 .feature{
@@ -88,6 +94,10 @@
 
 .card-head{
     color: #f8bc24;
+}
+
+.card-body{
+    color: #266867 !important;
 }
 
 .card-img{
