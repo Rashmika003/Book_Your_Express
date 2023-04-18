@@ -157,9 +157,11 @@ i {
     transition: .3s;
 }
 
-    .submit:hover {
-        box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
-    }
+.submit:hover {
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+    
+}
+
 
 .two-col {
     display: flex;

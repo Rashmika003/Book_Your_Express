@@ -176,6 +176,11 @@ form .button {
     cursor: pointer;
 }
 
+/*this is not working.*/
+/* .input :hover{
+    border: 1px solid #ff7200 ;
+} */
+
 /* hide arrow in number type input*/
 /* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

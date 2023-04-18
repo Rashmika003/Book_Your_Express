@@ -15,6 +15,7 @@
   <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
     crossorigin="anonymous"></script>
   <!-- jquery-3 -->
+  
   <title>Register</title>
 
 </head>
@@ -59,7 +60,7 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required minlength="5" />
+            <input class="input" type="text" id="fullName" name="fullName" placeholder="Enter your name" required minlength="5" />
             <!-- Erorr messages for full name section -->
             <p class="error" id="FullNameError1"></p>
 
@@ -67,22 +68,22 @@
             <p class="error" id="FullNameError3"></p>
 
             <span class="details">Username</span>
-            <input id="userName" type="text" name="userName" placeholder="Enter your username" required minlength="5" />
+            <input class="input" id="userName" type="text" name="userName" placeholder="Enter your username" required minlength="5" />
             <!-- Erorr message for user name section -->
             <p class="error" id="userNameError1"></p>
             <p class="error" id="userNameError2"></p>
             <p class="error" id="userNameError3"></p>
 
             <span class="details">Email</span>
-            <input id="email" type="email" name="email" placeholder="Enter your email" required />
+            <input class="input" id="email" type="email" name="email" placeholder="Enter your email" required />
             <p class="error" id="emailError1"></p><!-- Erorr message for email -->
 
             <span class="details">Phone Number</span>
-            <input id="phoneNumber" type="number" name="phoneNumber" placeholder="Enter your number" required minlength="10" />
+            <input class="input" id="phoneNumber" type="number" name="phoneNumber" placeholder="Enter your number" required minlength="10" />
             <p class="error" id="phoneNoError1"></p><!-- Erorr message for phone number -->
 
             <span class="details">Password</span>
-            <input id="password" type="password" name="password1" placeholder="Enter your password" required minlength="8" />
+            <input class="input" id="password" type="password" name="password1" placeholder="Enter your password" required minlength="8" />
             <div class="passwordDetails">
               
               <div class="showHide" id="showAndHide">
@@ -98,7 +99,7 @@
             <p class="error" id="passwordError1"></p><!-- Erorr message for Password -->
 
             <span class="details">Confirm Password</span>
-            <input id="password2" type="password" name="password2" placeholder="Confirm your password" required minlength="8" />
+            <input class="input" id="password2" type="password" name="password2" placeholder="Confirm your password" required minlength="8" />
             
             <div class="showHide" id="showAndHide2">
               <p class="passwordShowAndHide" id="showPassword2">show password</p> <!-- click this to show password -->
@@ -152,6 +153,7 @@
     </div>
   </section>
 
+  
   <script>
     $(document).ready(function () {
 
@@ -447,21 +449,19 @@
       submitButtorn.style.background = "white";
     });
 
-
-
-    //to do : submit data to goole sheet
-
-
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<< submit >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
- 
+    
 
 
 
   });//end of documet.redy ()
 
   </script>
+
+<script type="text/javascript" src="script.js"></script><!-- java script file-->
+
 
 </body>
 
