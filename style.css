@@ -1,0 +1,212 @@
+/* styles for ticketing.html  */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+#container {
+    border: 1px rgb(255, 255, 255) solid;
+    padding-top: 5vh;
+    margin-inline: 5vw;
+}
+
+.sub-container {
+    border: 1px rgb(235, 7, 7) solid;
+    margin-inline: 5vw;
+}
+
+/* <<<<<<<<<<<<< select route +Start >>>>>>> */
+#sub-container-slect-route{
+    height: 10vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-route input,select{
+    height: 5vh;
+    cursor: pointer;
+    margin-inline: 2vw;
+    background-color: #ffc107;
+    border-radius: 2vh;
+}
+
+select option {
+    /* color: blue; */
+    background-color: #e2d222;
+  }
+
+.select-route select{
+    width: 15vw;
+}
+
+#select-route-search{
+    background-color: #ffc107;
+    height: 5vh;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    padding-top: 0.4vh;
+    border-radius: 3vh;
+    cursor: pointer;
+}
+
+#select-route-search:hover{
+    background-color: #e2d222;
+    color: #002447;
+}
+/* <<<<<<<<<<<<< select route +End >>>>>>> */
+
+/* <<<<<<<<<<<<<<<<< bus-details-select secion START  >>>>>>>>>>>>> */
+    
+.bus-details-sections{
+    width: 22vw;
+    margin-block: 3vh;
+    /* height: 8vh; */
+    border: 1px #e2d222 solid;
+    border-radius: 3vh;
+    margin-inline: 2vw;
+    /* background-color: #00274e; */
+    
+}
+#sub-container-bus-details{
+    /* height: 15vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bus-name{
+    /* border: 1px rgb(14, 206, 219) solid; */
+    font-size: 4vh;
+    color: #e2d222;
+    text-align: center;
+    height: 6vh;
+}
+
+.bus-detail-p{
+    color: white;
+    font-size: 3vh;
+    /* border: 1px rgb(75, 65, 160) solid; */
+    margin: 0;
+    font: oblique;
+    margin-left: 0.3vw;
+}
+
+
+#select-bus-1-select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* border: 1px rgb(225, 90, 230) solid; */
+}
+
+.bus-select-button{
+    text-align: center;
+    /* border: 1px rgb(122, 0, 106) solid; */
+    font-size: 4vh;
+    color: #002447;
+    background-color: #ffc107;
+    padding-inline: 1vw;
+    border-radius: 2vh;
+    margin-top: 2vh;
+    cursor: pointer;
+}
+
+.bus-select-button:hover{
+    background-color: #f7e860;
+    /* text-shadow: 1px 1px #FF1493 */
+}
+
+.bus-details{
+    display: flex;
+    justify-content: center;
+}
+/* <<<<<<<<<<<<<<<<< bus-details-select secion END  >>>>>>>>>>>>> */
+ 
+
+/* ***************** bus structure Start ****************** */
+#sub-container-whole-bus{
+    height: 100vh;
+}
+
+#bus-seat-structure{
+    width: 40vw;
+    border: 1px rgb(252, 255, 47) solid;
+    height: 100vh;
+}
+
+#bus-other-details{
+    width: 40vw;
+    border: 1px rgb(252, 255, 47) solid;
+    height: 100vh;
+}
+
+#seat52{
+    width: 40vw;
+    height: 100vh;
+    border: 3px rgb(50, 47, 255) solid;
+    background-image: url(resources/seat52-bus-background.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#seat32{
+    width: 40vw;
+    height: 100vh;
+    border: 3px rgb(255, 77, 216) solid;
+    background-image: url(resources/seat32-bus-background.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.box{
+    /* border: 1px rgb(0, 0, 0) solid; */
+    height: 6vh;
+    width: 3.3vw;
+}
+
+.rows{
+    /* border: 1px rgb(231, 16, 16) solid; */
+    display: flex;
+    justify-content: center;
+    margin-block: 1vh;
+}
+
+.instruction-select-seats{
+    font-size: 4vh;
+    color: #e2d222;
+    text-align: center;
+    height: 6vh;
+    margin-bottom: 9vh;
+}
+
+.seat{
+    /* remove this color */
+    background-color: aqua;
+    border: 1px rgb(0, 0, 0) solid;
+
+}
+.seat:hover{
+    border: 3px rgb(245, 218, 65) solid;
+
+}
+/* ***************** bus structure End ****************** */
+
+#sub-container-notes{
+    height: 5vh;
+}

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/62fff06bf6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://kit.fontawesome.com/62fff06bf6.css" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="bootstrap/bootstrap.css"> -->
-    <link rel="stylesheet" href="CSS/bootstrap-additonal.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Destinations</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/62fff06bf6.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://kit.fontawesome.com/62fff06bf6.css" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="bootstrap/bootstrap.css"> -->
+  <link rel="stylesheet" href="CSS/bootstrap-additonal.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Destinations</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+
+
 </head>
 
 <style>
-  * {
-     margin: 5px;              /* this needs to be changed when finalizing styles */
-  }
-
   .content {
     display: flex;
   }
@@ -45,46 +49,892 @@
     display: flex;
   }
 
-  .seat {
-    /* border: 1px rgb(68, 255, 0) solid; */
+  /* .seat {
+    border: 1px rgb(68, 255, 0) solid;
     background-color: aqua;
     width: 100px;
     height: 100px;
-  }
+  } */
 </style>
 
 
 <body class="background">
 
   <script>
-    function myFunction() {
-      // Declare variables
-      var input, filter, ul, li, a, i;
-      input = document.getElementById("mySearch");
-      filter = input.value.toUpperCase();
-      ul = document.getElementById("myMenu");
-      li = ul.getElementsByTagName("li");
-    
-      // Loop through all list items, and hide those who don't match the search query
-      for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          li[i].style.display = "";
-        } else {
-          li[i].style.display = "none";
-        }
-      }
-    }
+    // function myFunction() {
+    //   // Declare variables
+    //   var input, filter, ul, li, a, i;
+    //   input = document.getElementById("mySearch");
+    //   filter = input.value.toUpperCase();
+    //   ul = document.getElementById("myMenu");
+    //   li = ul.getElementsByTagName("li");
+
+    //   // Loop through all list items, and hide those who don't match the search query
+    //   for (i = 0; i < li.length; i++) {
+    //     a = li[i].getElementsByTagName("a")[0];
+    //     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //       li[i].style.display = "";
+    //     } else {
+    //       li[i].style.display = "none";
+    //     }
+    //   }
+    // }
 
     window.onload = function () {
-        const seatDetails = [
+
+      const seatDetails = [
+        { seatNo: "s1", isClicked: false, status: "booked" },
+        { seatNo: "s2", isClicked: false, status: "not-booked" },
+        { seatNo: "s3", isClicked: false, status: "booked" },
+        { seatNo: "s4", isClicked: false, status: "not-booked" },
+        { seatNo: "s5", isClicked: false, status: "booked" },
+        { seatNo: "s6", isClicked: false, status: "booked" },
+        { seatNo: "s7", isClicked: false, status: "not-booked" },
+        { seatNo: "s8", isClicked: false, status: "booked" },
+        { seatNo: "s9", isClicked: false, status: "booked" },
+        { seatNo: "s10", isClicked: false, status: "not-booked" },
+        { seatNo: "s11", isClicked: false, status: "booked" },
+        { seatNo: "s12", isClicked: false, status: "booked" },
+        { seatNo: "s13", isClicked: false, status: "not-booked" },
+        { seatNo: "s14", isClicked: false, status: "booked" },
+        { seatNo: "s15", isClicked: false, status: "not-booked" },
+        { seatNo: "s16", isClicked: false, status: "not-booked" },
+      ];
+
+      // hide bus-details, bus-structure
+      $("#sub-container-bus-details").hide();
+      $("#sub-container-whole-bus").hide();
+      $("#seat32").hide(); // hide seat32 structure
+      $("#seat52").hide(); // hide seat52 structure
+
+      //object references for further operations 
+      let selectedRoute = null;
+      let selectedBus = null;
+
+      // click search button 
+      $("#select-route-search").click(function () {
+        let start = $("#route-start").val();
+        let end = $("#route-end").val();
+        let date = $("#travel-date").val();
+        console.log(start + " " + end + " " + date); // to remove *****************************************
+        if (date != "") {
+          //modify the bus-details in here according to selected route
+          if(start == "kandy" && end == "galle"){
+            // kandy - galle selection
+
+            selectedRoute = kandyGalle;
+
+            let bus1 = kandyGalle.bustList[0];
+            let bus2 = kandyGalle.bustList[1];
+            let bus3 = kandyGalle.bustList[2];
+            
+            // set bus 1 details 
+            $("#bus-1-name").text(bus1.busName);
+            $("#bus-1-start").text(": "+bus1.StartTime);
+            $("#bus-1-end").text(": "+bus1.EndTime);
+            $("#bus-1-status").text(": "+bus1.Status);
+            $("#bus-1-totalSeats").text(": "+bus1.Seats);
+            $("#bus-1-regNumber").text(": "+bus1.RegNumber);
+
+            // set bus 2 details 
+            $("#bus-2-name").text(bus2.busName);
+            $("#bus-2-start").text(": "+bus2.StartTime);
+            $("#bus-2-end").text(": "+bus2.EndTime);
+            $("#bus-2-status").text(": "+bus2.Status);
+            $("#bus-2-totalSeats").text(": "+bus2.Seats);
+            $("#bus-2-regNumber").text(": "+bus2.RegNumber);
+
+            // set bus 3 details 
+            $("#bus-3-name").text(bus3.busName);
+            $("#bus-3-start").text(": "+bus3.StartTime);
+            $("#bus-3-end").text(": "+bus3.EndTime);
+            $("#bus-3-status").text(": "+bus3.Status);
+            $("#bus-3-totalSeats").text(": "+bus3.Seats);
+            $("#bus-3-regNumber").text(": "+bus3.RegNumber);
+
+          }
+          else if(start == "kandy" && end == "colombo"){
+            // kandy - colombo selection 
+
+            selectedRoute = kandyColombo;
+
+            let bus1 = kandyColombo.bustList[0];
+            let bus2 = kandyColombo.bustList[1];
+            let bus3 = kandyColombo.bustList[2];
+
+            // set bus 1 details 
+            $("#bus-1-name").text(bus1.busName);
+            $("#bus-1-start").text(": "+bus1.StartTime);
+            $("#bus-1-end").text(": "+bus1.EndTime);
+            $("#bus-1-status").text(": "+bus1.Status);
+            $("#bus-1-totalSeats").text(": "+bus1.Seats);
+            $("#bus-1-regNumber").text(": "+bus1.RegNumber);
+
+            // set bus 2 details 
+            $("#bus-2-name").text(bus2.busName);
+            $("#bus-2-start").text(": "+bus2.StartTime);
+            $("#bus-2-end").text(": "+bus2.EndTime);
+            $("#bus-2-status").text(": "+bus2.Status);
+            $("#bus-2-totalSeats").text(": "+bus2.Seats);
+            $("#bus-2-regNumber").text(": "+bus2.RegNumber);
+
+            // set bus 3 details 
+            $("#bus-3-name").text(bus3.busName);
+            $("#bus-3-start").text(": "+bus3.StartTime);
+            $("#bus-3-end").text(": "+bus3.EndTime);
+            $("#bus-3-status").text(": "+bus3.Status);
+            $("#bus-3-totalSeats").text(": "+bus3.Seats);
+            $("#bus-3-regNumber").text(": "+bus3.RegNumber);
+          }
+          else if(start == "jaffna" && end == "galle"){
+            // jaffna - galle selection 
+
+            selectedRoute = JaffnaGalle;
+
+            let bus1 = JaffnaGalle.bustList[0];
+            let bus2 = JaffnaGalle.bustList[1];
+            let bus3 = JaffnaGalle.bustList[2];
+            
+            // set bus 1 details 
+            $("#bus-1-name").text(bus1.busName);
+            $("#bus-1-start").text(": "+bus1.StartTime);
+            $("#bus-1-end").text(": "+bus1.EndTime);
+            $("#bus-1-status").text(": "+bus1.Status);
+            $("#bus-1-totalSeats").text(": "+bus1.Seats);
+            $("#bus-1-regNumber").text(": "+bus1.RegNumber);
+
+            // set bus 2 details 
+            $("#bus-2-name").text(bus2.busName);
+            $("#bus-2-start").text(": "+bus2.StartTime);
+            $("#bus-2-end").text(": "+bus2.EndTime);
+            $("#bus-2-status").text(": "+bus2.Status);
+            $("#bus-2-totalSeats").text(": "+bus2.Seats);
+            $("#bus-2-regNumber").text(": "+bus2.RegNumber);
+
+            // set bus 3 details 
+            $("#bus-3-name").text(bus3.busName);
+            $("#bus-3-start").text(": "+bus3.StartTime);
+            $("#bus-3-end").text(": "+bus3.EndTime);
+            $("#bus-3-status").text(": "+bus3.Status);
+            $("#bus-3-totalSeats").text(": "+bus3.Seats);
+            $("#bus-3-regNumber").text(": "+bus3.RegNumber);
+
+          }
+          else if(start == "jaffna" && end == "colombo"){
+            // jaffna - colombo selection 
+
+            selectedRoute = JaffnaColombo;
+
+            let bus1 = JaffnaColombo.bustList[0];
+            let bus2 = JaffnaColombo.bustList[1];
+            let bus3 = JaffnaColombo.bustList[2];
+            
+            // set bus 1 details 
+            $("#bus-1-name").text(bus1.busName);
+            $("#bus-1-start").text(": "+bus1.StartTime);
+            $("#bus-1-end").text(": "+bus1.EndTime);
+            $("#bus-1-status").text(": "+bus1.Status);
+            $("#bus-1-totalSeats").text(": "+bus1.Seats);
+            $("#bus-1-regNumber").text(": "+bus1.RegNumber);
+
+            // set bus 2 details 
+            $("#bus-2-name").text(bus2.busName);
+            $("#bus-2-start").text(": "+bus2.StartTime);
+            $("#bus-2-end").text(": "+bus2.EndTime);
+            $("#bus-2-status").text(": "+bus2.Status);
+            $("#bus-2-totalSeats").text(": "+bus2.Seats);
+            $("#bus-2-regNumber").text(": "+bus2.RegNumber);
+
+            // set bus 3 details 
+            $("#bus-3-name").text(bus3.busName);
+            $("#bus-3-start").text(": "+bus3.StartTime);
+            $("#bus-3-end").text(": "+bus3.EndTime);
+            $("#bus-3-status").text(": "+bus3.Status);
+            $("#bus-3-totalSeats").text(": "+bus3.Seats);
+            $("#bus-3-regNumber").text(": "+bus3.RegNumber);
+
+          }
+          
+          $("#sub-container-bus-details").show();
+        }
+        else {
+          alert("Please select the date!");
+        }
+      });
+
+      // event for select buttons
+      // button 1
+      $("#bus-1-select-button").click(function(){
+        selectedBus = selectedRoute.bustList[0];
+      });
+      // button 2
+      $("#bus-2-select-button").click(function(){
+        selectedBus = selectedRoute.bustList[1];
+      });
+      // button 3
+      $("#bus-3-select-button").click(function(){
+        selectedBus = selectedRoute.bustList[2];
+      });
+
+      // this actions happens after selecting the bus,
+      $(".bus-select-button").click(function(){
+        // console.log(selectedBus); // .........................to delete ...............
+        $("#sub-container-whole-bus").show();
+        
+        // scroll down to bus structure  #sub-container-whole-bus
+        const myElement = document.querySelector("#sub-container-whole-bus");
+        window.scrollTo(myElement.offsetLeft, myElement.offsetTop);
+        
+        // hide seat32bus or hide seat52bus accordingly in here 
+        $("#sub-container-whole-bus").show();
+
+        if(selectedBus.Seats == 32){
+          $("#seat32").show(); // hide seat32 structure
+          $("#seat52").hide(); // hide seat32 structure
+        }
+        if(selectedBus.Seats == 52){
+          $("#seat52").show(); // hide seat32 structure
+          $("#seat32").hide(); // hide seat32 structure
+        }
+      
+        initialColoringSeats();
+
+      });
+      
+      
+      function initialColoringSeats() {
+        let seatDetail = selectedBus.SeatDetails;
+        // console.log("selectedBus 000 :"+selectedBus.EndTime);
+        // console.log("Seat detail"+seatDetail);
+        // console.log("Seat detail111"+selectedBus.SeatDetails);
+
+
+        //iterate through seatDeatails list and color seat elements accordingly
+        for (let i = 0; i < seatDetail.length; i++) {
+          let seat = seatDetail[i];
+          console.log(seat.seatNo);
+          if (seat.status == "booked") {
+            //color red -> booked seats
+            let seatObj = document.getElementById(seat.seatNo);
+            if(seatObj != null){
+              seatObj.style.backgroundColor = "red";
+            }
+          }
+        }
+      }
+      // initialColoringSeats();
+
+      // //event-listners for all "seat" elements
+      // const allSeats = document.getElementsByClassName("seat");
+
+      // for (let i = 0; i < allSeats.length; i++) {
+      //   allSeats[i].addEventListener("click", function () {
+      //     seatManager(allSeats[i].id);
+      //   });
+      // }
+
+      // function seatManager(seatId) {
+      //   //check status and change seatDeatais list accordingly
+      //   for (let i = 0; i < seatDetails.length; i++) {
+      //     let seat = seatDetails[i];
+      //     if (seat.seatNo == seatId && !seat.isClicked && seat.status == "not-booked") {
+      //       //not clicked, not-booked seats
+      //       let seatObj = document.getElementById(seat.seatNo);
+      //       seatObj.style.backgroundColor = "blue";
+      //       seat.isClicked = true;
+      //       seat.status = "booked";
+      //       selectedSeatDataSaver(seatId); //pass seat ID to save
+      //       return;
+      //     }
+      //     if (seat.seatNo == seatId && seat.status == "booked" && !seat.isClicked) {
+      //       //isClicked = false & booked <-- these are already booked red seats
+      //       alert("Sorry! seat is booked");
+      //       return;
+      //     }
+      //     if (seat.seatNo == seatId && seat.status == "booked" && seat.isClicked) {
+      //       // isclicked = ture & booked <-- these are user clicked elements
+      //       //status change back to original status since user click them again
+      //       let seatObj = document.getElementById(seat.seatNo);
+      //       seatObj.style.backgroundColor = "aqua";
+      //       seat.isClicked = false;
+      //       seat.status = "not-booked";
+      //       selectedSeatDataSaver(seatId); //pass seat ID to remove from saved data
+      //       return;
+      //     }
+      //   }
+      // }
+
+      // selectedSeats = [];
+      // function selectedSeatDataSaver(seatId) {
+      //   if (!selectedSeats.includes(seatId)) {
+      //     console.log(seatId + " is recorded");
+      //     selectedSeats.push(seatId);
+      //     selectedSeatIndicator(selectedSeats);
+      //     return;
+      //   }
+      //   if (selectedSeats.includes(seatId)) {
+      //     for (let i = 0; i < selectedSeats.length; i++) {
+      //       if (selectedSeats[i] == seatId) {
+      //         console.log(seatId + " is deleted");
+      //         selectedSeats.splice(i, 1);
+      //         selectedSeatIndicator(selectedSeats);
+      //         return;
+      //       }
+      //     }
+      //   }
+      // }
+
+      // function selectedSeatIndicator(selectedSeats) {
+      //   selectedSeats.sort((a, b) => a.localeCompare(b, undefined, { numeric: true })); // magic sort()
+      //   seatNames = "Selected Seats : "
+      //   for (let i = 0; i < selectedSeats.length; i++) {
+      //     seatNames += " " + selectedSeats[i];
+      //   }
+      //   console.log("selected all seats >> " + seatNames);
+
+      //   let selectedObj = document.getElementById("selectedSeats");
+      //   selectedObj.innerHTML = seatNames;
+      //   let selectedObj2 = document.getElementById("numberOfSeats");
+      //   selectedObj2.innerHTML = "Number of Seats :" + selectedSeats.length;
+      //   let selectedObj3 = document.getElementById("totalCost");
+      //   selectedObj3.innerHTML = "Total cost : " + selectedSeats.length * 100;  // ticket price is 100$
+
+      // }
+
+  // =========================================================================
+  // =================== BUS data for ticketing.html =========================
+  // =========================================================================
+
+  const kandyColombo = {
+    bustList:[
+      {
+        busName : "Pink Queen",
+        StartTime : "7.00AM",
+        EndTime : "10.00AM",
+        Status : "AC bus",
+        Seats : 52,
+        RegNumber : "NA-2020",
+        SeatDetails : [
           { seatNo: "s1", isClicked: false, status: "booked" },
           { seatNo: "s2", isClicked: false, status: "not-booked" },
           { seatNo: "s3", isClicked: false, status: "booked" },
           { seatNo: "s4", isClicked: false, status: "not-booked" },
           { seatNo: "s5", isClicked: false, status: "booked" },
           { seatNo: "s6", isClicked: false, status: "booked" },
-          { seatNo: "s7", isClicked: false, status: "not-booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
+          { seatNo: "s8", isClicked: false, status: "booked" },
+          { seatNo: "s9", isClicked: false, status: "booked" },
+          { seatNo: "s10", isClicked: false, status: "not-booked" },
+          { seatNo: "s11", isClicked: false, status: "booked" },
+          { seatNo: "s12", isClicked: false, status: "booked" },
+          { seatNo: "s13", isClicked: false, status: "not-booked" },
+          { seatNo: "s14", isClicked: false, status: "booked" },
+          { seatNo: "s15", isClicked: false, status: "booked" },
+          { seatNo: "s16", isClicked: false, status: "not-booked" },
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "booked" },
+          { seatNo: "s20", isClicked: false, status: "not-booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "not-booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "not-booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "not-booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "not-booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "booked" },
+          { seatNo: "s51", isClicked: false, status: "booked" },
+          { seatNo: "s52", isClicked: false, status: "booked" },
+        ],
+      },
+      {
+        busName : "Crazy Runner",
+        StartTime : "12.00PM",
+        EndTime : "03.30PM",
+        Status : "Semi-luxury",
+        Seats : 52,
+        RegNumber : "NA-9356",
+        SeatDetails : [
+          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s2", isClicked: false, status: "not-booked" },
+          { seatNo: "s3", isClicked: false, status: "booked" },
+          { seatNo: "s4", isClicked: false, status: "not-booked" },
+          { seatNo: "s5", isClicked: false, status: "booked" },
+          { seatNo: "s6", isClicked: false, status: "booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
+          { seatNo: "s8", isClicked: false, status: "booked" },
+          { seatNo: "s9", isClicked: false, status: "booked" },
+          { seatNo: "s10", isClicked: false, status: "not-booked" },
+          { seatNo: "s11", isClicked: false, status: "booked" },
+          { seatNo: "s12", isClicked: false, status: "not-booked" },
+          { seatNo: "s13", isClicked: false, status: "not-booked" },
+          { seatNo: "s14", isClicked: false, status: "booked" },
+          { seatNo: "s15", isClicked: false, status: "booked" },
+          { seatNo: "s16", isClicked: false, status: "not-booked" },
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "not-booked" },
+          { seatNo: "s20", isClicked: false, status: "booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "not-booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "not-booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "not-booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "not-booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "not-booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "booked" },
+          { seatNo: "s51", isClicked: false, status: "not-booked" },
+          { seatNo: "s52", isClicked: false, status: "not-booked" },
+        ],
+      },
+      {
+        busName : "AWS Transport",
+        StartTime : "7.45PM",
+        EndTime : "10.00PM",
+        Status : "Normal Price",
+        Seats : 32,
+        RegNumber : "NB-9020",
+        SeatDetails : [
+          { seatNo: "ss1", isClicked: false, status: "not-booked" },
+          { seatNo: "ss2", isClicked: false, status: "not-booked" },
+          { seatNo: "ss3", isClicked: false, status: "booked" },
+          { seatNo: "ss4", isClicked: false, status: "not-booked" },
+          { seatNo: "ss5", isClicked: false, status: "not-booked" },
+          { seatNo: "ss6", isClicked: false, status: "not-booked" },
+          { seatNo: "ss7", isClicked: false, status: "booked" },
+          { seatNo: "ss8", isClicked: false, status: "booked" },
+          { seatNo: "ss9", isClicked: false, status: "booked" },
+          { seatNo: "ss10", isClicked: false, status: "booked" },
+          { seatNo: "ss11", isClicked: false, status: "booked" },
+          { seatNo: "ss12", isClicked: false, status: "booked" },
+          { seatNo: "ss13", isClicked: false, status: "not-booked" },
+          { seatNo: "ss14", isClicked: false, status: "booked" },
+          { seatNo: "ss15", isClicked: false, status: "booked" },
+          { seatNo: "ss16", isClicked: false, status: "not-booked" },
+          { seatNo: "ss17", isClicked: false, status: "booked" },
+          { seatNo: "ss18", isClicked: false, status: "booked" },
+          { seatNo: "ss19", isClicked: false, status: "booked" },
+          { seatNo: "ss20", isClicked: false, status: "not-booked" },
+          { seatNo: "ss21", isClicked: false, status: "booked" },
+          { seatNo: "ss22", isClicked: false, status: "booked" },
+          { seatNo: "ss23", isClicked: false, status: "booked" },
+          { seatNo: "ss24", isClicked: false, status: "booked" },
+          { seatNo: "ss25", isClicked: false, status: "not-booked" },
+          { seatNo: "ss26", isClicked: false, status: "not-booked" },
+          { seatNo: "ss27", isClicked: false, status: "not-booked" },
+          { seatNo: "ss28", isClicked: false, status: "booked" },
+          { seatNo: "ss29", isClicked: false, status: "booked" },
+          { seatNo: "ss30", isClicked: false, status: "not-booked" },
+          { seatNo: "ss31", isClicked: false, status: "booked" },
+          { seatNo: "ss32", isClicked: false, status: "booked" },
+        ],
+      },
+    ]
+  };
+
+  const kandyGalle = {
+    bustList:[
+      {
+        busName : "Golden Bird",
+        StartTime : "6.00AM",
+        EndTime : "12.30AM",
+        Status : "AC bus",
+        Seats : 52,
+        RegNumber : "NA-0920",
+        SeatDetails : [
+          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s2", isClicked: false, status: "not-booked" },
+          { seatNo: "s3", isClicked: false, status: "booked" },
+          { seatNo: "s4", isClicked: false, status: "not-booked" },
+          { seatNo: "s5", isClicked: false, status: "booked" },
+          { seatNo: "s6", isClicked: false, status: "booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
+          { seatNo: "s8", isClicked: false, status: "booked" },
+          { seatNo: "s9", isClicked: false, status: "booked" },
+          { seatNo: "s10", isClicked: false, status: "not-booked" },
+          { seatNo: "s11", isClicked: false, status: "booked" },
+          { seatNo: "s12", isClicked: false, status: "booked" },
+          { seatNo: "s13", isClicked: false, status: "not-booked" },
+          { seatNo: "s14", isClicked: false, status: "booked" },
+          { seatNo: "s15", isClicked: false, status: "booked" },
+          { seatNo: "s16", isClicked: false, status: "not-booked" },
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "booked" },
+          { seatNo: "s20", isClicked: false, status: "not-booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "not-booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "not-booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "not-booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "not-booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "booked" },
+          { seatNo: "s51", isClicked: false, status: "booked" },
+          { seatNo: "s52", isClicked: false, status: "booked" },
+        ],
+      },
+      {
+        busName : "Red Rose",
+        StartTime : "12.00PM",
+        EndTime : "6.00PM",
+        Status : "Semi-luxury",
+        Seats : 52,
+        RegNumber : "NC-8356",
+        SeatDetails : [
+          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s2", isClicked: false, status: "not-booked" },
+          { seatNo: "s3", isClicked: false, status: "booked" },
+          { seatNo: "s4", isClicked: false, status: "not-booked" },
+          { seatNo: "s5", isClicked: false, status: "booked" },
+          { seatNo: "s6", isClicked: false, status: "booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
+          { seatNo: "s8", isClicked: false, status: "booked" },
+          { seatNo: "s9", isClicked: false, status: "booked" },
+          { seatNo: "s10", isClicked: false, status: "not-booked" },
+          { seatNo: "s11", isClicked: false, status: "booked" },
+          { seatNo: "s12", isClicked: false, status: "not-booked" },
+          { seatNo: "s13", isClicked: false, status: "not-booked" },
+          { seatNo: "s14", isClicked: false, status: "booked" },
+          { seatNo: "s15", isClicked: false, status: "booked" },
+          { seatNo: "s16", isClicked: false, status: "not-booked" },
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "not-booked" },
+          { seatNo: "s20", isClicked: false, status: "booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "not-booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "not-booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "not-booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "not-booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "not-booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "booked" },
+          { seatNo: "s51", isClicked: false, status: "not-booked" },
+          { seatNo: "s52", isClicked: false, status: "not-booked" },
+        ],
+      },
+      {
+        busName : "Blue Diamond",
+        StartTime : "7.40PM",
+        EndTime : "11.30PM",
+        Status : "Normal Price",
+        Seats : 32,
+        RegNumber : "NB-3421",
+        SeatDetails : [
+          { seatNo: "ss1", isClicked: false, status: "booked" },
+          { seatNo: "ss2", isClicked: false, status: "not-booked" },
+          { seatNo: "ss3", isClicked: false, status: "booked" },
+          { seatNo: "ss4", isClicked: false, status: "not-booked" },
+          { seatNo: "ss5", isClicked: false, status: "booked" },
+          { seatNo: "ss6", isClicked: false, status: "not-booked" },
+          { seatNo: "ss7", isClicked: false, status: "booked" },
+          { seatNo: "ss8", isClicked: false, status: "booked" },
+          { seatNo: "ss9", isClicked: false, status: "booked" },
+          { seatNo: "ss10", isClicked: false, status: "booked" },
+          { seatNo: "ss11", isClicked: false, status: "booked" },
+          { seatNo: "ss12", isClicked: false, status: "booked" },
+          { seatNo: "ss13", isClicked: false, status: "booked" },
+          { seatNo: "ss14", isClicked: false, status: "booked" },
+          { seatNo: "ss15", isClicked: false, status: "booked" },
+          { seatNo: "ss16", isClicked: false, status: "not-booked" },
+          { seatNo: "ss17", isClicked: false, status: "booked" },
+          { seatNo: "ss18", isClicked: false, status: "booked" },
+          { seatNo: "ss19", isClicked: false, status: "booked" },
+          { seatNo: "ss20", isClicked: false, status: "not-booked" },
+          { seatNo: "ss21", isClicked: false, status: "booked" },
+          { seatNo: "ss22", isClicked: false, status: "booked" },
+          { seatNo: "ss23", isClicked: false, status: "booked" },
+          { seatNo: "ss24", isClicked: false, status: "not-booked" },
+          { seatNo: "ss25", isClicked: false, status: "booked" },
+          { seatNo: "ss26", isClicked: false, status: "not-booked" },
+          { seatNo: "ss27", isClicked: false, status: "booked" },
+          { seatNo: "ss28", isClicked: false, status: "not-booked" },
+          { seatNo: "ss29", isClicked: false, status: "booked" },
+          { seatNo: "ss30", isClicked: false, status: "booked" },
+          { seatNo: "ss31", isClicked: false, status: "booked" },
+          { seatNo: "ss32", isClicked: false, status: "booked" },
+        ],
+      },
+    ]
+  };
+
+  const JaffnaGalle = {
+    bustList:[
+      {
+        busName : "Green Star",
+        StartTime : "5.30AM",
+        EndTime : "2.30PM",
+        Status : "AC bus",
+        Seats : 52,
+        RegNumber : "ND-0210",
+        SeatDetails : [
+          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s2", isClicked: false, status: "not-booked" },
+          { seatNo: "s3", isClicked: false, status: "booked" },
+          { seatNo: "s4", isClicked: false, status: "not-booked" },
+          { seatNo: "s5", isClicked: false, status: "booked" },
+          { seatNo: "s6", isClicked: false, status: "booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
+          { seatNo: "s8", isClicked: false, status: "booked" },
+          { seatNo: "s9", isClicked: false, status: "booked" },
+          { seatNo: "s10", isClicked: false, status: "booked" },
+          { seatNo: "s11", isClicked: false, status: "not-booked" },
+          { seatNo: "s12", isClicked: false, status: "not-booked" },
+          { seatNo: "s13", isClicked: false, status: "not-booked" },
+          { seatNo: "s14", isClicked: false, status: "booked" },
+          { seatNo: "s15", isClicked: false, status: "booked" },
+          { seatNo: "s16", isClicked: false, status: "booked" },
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "booked" },
+          { seatNo: "s20", isClicked: false, status: "booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "not-booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "not-booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "not-booked" },
+          { seatNo: "s51", isClicked: false, status: "booked" },
+          { seatNo: "s52", isClicked: false, status: "booked" },
+        ],
+      },
+      {
+        busName : "White Elephant",
+        StartTime : "12.00PM",
+        EndTime : "9.00PM",
+        Status : "Semi-luxury",
+        Seats : 52,
+        RegNumber : "NC-8096",
+        SeatDetails : [
+          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s2", isClicked: false, status: "not-booked" },
+          { seatNo: "s3", isClicked: false, status: "booked" },
+          { seatNo: "s4", isClicked: false, status: "not-booked" },
+          { seatNo: "s5", isClicked: false, status: "not-booked" },
+          { seatNo: "s6", isClicked: false, status: "booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
+          { seatNo: "s8", isClicked: false, status: "booked" },
+          { seatNo: "s9", isClicked: false, status: "booked" },
+          { seatNo: "s10", isClicked: false, status: "booked" },
+          { seatNo: "s11", isClicked: false, status: "booked" },
+          { seatNo: "s12", isClicked: false, status: "booked" },
+          { seatNo: "s13", isClicked: false, status: "not-booked" },
+          { seatNo: "s14", isClicked: false, status: "booked" },
+          { seatNo: "s15", isClicked: false, status: "booked" },
+          { seatNo: "s16", isClicked: false, status: "not-booked" },
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "not-booked" },
+          { seatNo: "s20", isClicked: false, status: "booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "not-booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "not-booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "not-booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "booked" },
+          { seatNo: "s51", isClicked: false, status: "not-booked" },
+          { seatNo: "s52", isClicked: false, status: "not-booked" },
+        ],
+      },
+      {
+        busName : "Happy Journey",
+        StartTime : "7.40PM",
+        EndTime : "4.30AM",
+        Status : "Normal Price",
+        Seats : 32,
+        RegNumber : "NB-3421",
+        SeatDetails : [
+          { seatNo: "ss1", isClicked: false, status: "booked" },
+          { seatNo: "ss2", isClicked: false, status: "not-booked" },
+          { seatNo: "ss3", isClicked: false, status: "booked" },
+          { seatNo: "ss4", isClicked: false, status: "not-booked" },
+          { seatNo: "ss5", isClicked: false, status: "booked" },
+          { seatNo: "ss6", isClicked: false, status: "not-booked" },
+          { seatNo: "ss7", isClicked: false, status: "booked" },
+          { seatNo: "ss8", isClicked: false, status: "booked" },
+          { seatNo: "ss9", isClicked: false, status: "booked" },
+          { seatNo: "ss10", isClicked: false, status: "booked" },
+          { seatNo: "ss11", isClicked: false, status: "not-booked" },
+          { seatNo: "ss12", isClicked: false, status: "not-booked" },
+          { seatNo: "ss13", isClicked: false, status: "not-booked" },
+          { seatNo: "ss14", isClicked: false, status: "not-booked" },
+          { seatNo: "ss15", isClicked: false, status: "booked" },
+          { seatNo: "ss16", isClicked: false, status: "not-booked" },
+          { seatNo: "ss17", isClicked: false, status: "booked" },
+          { seatNo: "ss18", isClicked: false, status: "booked" },
+          { seatNo: "ss19", isClicked: false, status: "booked" },
+          { seatNo: "ss20", isClicked: false, status: "not-booked" },
+          { seatNo: "ss21", isClicked: false, status: "booked" },
+          { seatNo: "ss22", isClicked: false, status: "booked" },
+          { seatNo: "ss23", isClicked: false, status: "booked" },
+          { seatNo: "ss24", isClicked: false, status: "booked" },
+          { seatNo: "ss25", isClicked: false, status: "not-booked" },
+          { seatNo: "ss26", isClicked: false, status: "not-booked" },
+          { seatNo: "ss27", isClicked: false, status: "not-booked" },
+          { seatNo: "ss28", isClicked: false, status: "booked" },
+          { seatNo: "ss29", isClicked: false, status: "booked" },
+          { seatNo: "ss30", isClicked: false, status: "not-booked" },
+          { seatNo: "ss31", isClicked: false, status: "not-booked" },
+          { seatNo: "ss32", isClicked: false, status: "not-booked" },
+        ],
+      },
+    ]
+  };
+
+  const JaffnaColombo = {
+    bustList:[
+      {
+        busName : "Safe Travel",
+        StartTime : "5.10AM",
+        EndTime : "1.30PM",
+        Status : "AC bus",
+        Seats : 52,
+        RegNumber : "ND-3865",
+        SeatDetails : [
+          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s2", isClicked: false, status: "not-booked" },
+          { seatNo: "s3", isClicked: false, status: "booked" },
+          { seatNo: "s4", isClicked: false, status: "not-booked" },
+          { seatNo: "s5", isClicked: false, status: "not-booked" },
+          { seatNo: "s6", isClicked: false, status: "not-booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
           { seatNo: "s8", isClicked: false, status: "booked" },
           { seatNo: "s9", isClicked: false, status: "booked" },
           { seatNo: "s10", isClicked: false, status: "not-booked" },
@@ -94,345 +944,596 @@
           { seatNo: "s14", isClicked: false, status: "booked" },
           { seatNo: "s15", isClicked: false, status: "not-booked" },
           { seatNo: "s16", isClicked: false, status: "not-booked" },
-        ];
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "booked" },
+          { seatNo: "s20", isClicked: false, status: "not-booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "not-booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "not-booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "not-booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "not-booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "not-booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "booked" },
+          { seatNo: "s51", isClicked: false, status: "booked" },
+          { seatNo: "s52", isClicked: false, status: "booked" },
+        ],
+      },
+      {
+        busName : "Wonderful Ride",
+        StartTime : "12.00PM",
+        EndTime : "5.00PM",
+        Status : "Semi-luxury",
+        Seats : 52,
+        RegNumber : "NA-8996",
+        SeatDetails : [
+          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s2", isClicked: false, status: "not-booked" },
+          { seatNo: "s3", isClicked: false, status: "booked" },
+          { seatNo: "s4", isClicked: false, status: "not-booked" },
+          { seatNo: "s5", isClicked: false, status: "booked" },
+          { seatNo: "s6", isClicked: false, status: "booked" },
+          { seatNo: "s7", isClicked: false, status: "booked" },
+          { seatNo: "s8", isClicked: false, status: "booked" },
+          { seatNo: "s9", isClicked: false, status: "booked" },
+          { seatNo: "s10", isClicked: false, status: "not-booked" },
+          { seatNo: "s11", isClicked: false, status: "booked" },
+          { seatNo: "s12", isClicked: false, status: "not-booked" },
+          { seatNo: "s13", isClicked: false, status: "not-booked" },
+          { seatNo: "s14", isClicked: false, status: "booked" },
+          { seatNo: "s15", isClicked: false, status: "booked" },
+          { seatNo: "s16", isClicked: false, status: "not-booked" },
+          { seatNo: "s17", isClicked: false, status: "not-booked" },
+          { seatNo: "s18", isClicked: false, status: "booked" },
+          { seatNo: "s19", isClicked: false, status: "not-booked" },
+          { seatNo: "s20", isClicked: false, status: "booked" },
+          { seatNo: "s21", isClicked: false, status: "booked" },
+          { seatNo: "s22", isClicked: false, status: "booked" },
+          { seatNo: "s23", isClicked: false, status: "not-booked" },
+          { seatNo: "s24", isClicked: false, status: "booked" },
+          { seatNo: "s25", isClicked: false, status: "not-booked" },
+          { seatNo: "s26", isClicked: false, status: "not-booked" },
+          { seatNo: "s27", isClicked: false, status: "not-booked" },
+          { seatNo: "s28", isClicked: false, status: "booked" },
+          { seatNo: "s29", isClicked: false, status: "booked" },
+          { seatNo: "s30", isClicked: false, status: "not-booked" },
+          { seatNo: "s31", isClicked: false, status: "booked" },
+          { seatNo: "s32", isClicked: false, status: "booked" },
+          { seatNo: "s33", isClicked: false, status: "not-booked" },
+          { seatNo: "s34", isClicked: false, status: "booked" },
+          { seatNo: "s35", isClicked: false, status: "not-booked" },
+          { seatNo: "s36", isClicked: false, status: "not-booked" },
+          { seatNo: "s37", isClicked: false, status: "booked" },
+          { seatNo: "s38", isClicked: false, status: "booked" },
+          { seatNo: "s39", isClicked: false, status: "booked" },
+          { seatNo: "s40", isClicked: false, status: "not-booked" },
+          { seatNo: "s41", isClicked: false, status: "booked" },
+          { seatNo: "s42", isClicked: false, status: "booked" },
+          { seatNo: "s43", isClicked: false, status: "not-booked" },
+          { seatNo: "s44", isClicked: false, status: "booked" },
+          { seatNo: "s45", isClicked: false, status: "not-booked" },
+          { seatNo: "s46", isClicked: false, status: "not-booked" },
+          { seatNo: "s47", isClicked: false, status: "booked" },
+          { seatNo: "s48", isClicked: false, status: "booked" },
+          { seatNo: "s49", isClicked: false, status: "booked" },
+          { seatNo: "s50", isClicked: false, status: "booked" },
+          { seatNo: "s51", isClicked: false, status: "not-booked" },
+          { seatNo: "s52", isClicked: false, status: "not-booked" },
+        ],
+      },
+      {
+        busName : "Journey of Dreams",
+        StartTime : "7.50PM",
+        EndTime : "3.10AM",
+        Status : "Normal Price",
+        Seats : 32,
+        RegNumber : "NB-3421",
+        SeatDetails : [
+          { seatNo: "ss1", isClicked: false, status: "booked" },
+          { seatNo: "ss2", isClicked: false, status: "not-booked" },
+          { seatNo: "ss3", isClicked: false, status: "booked" },
+          { seatNo: "ss4", isClicked: false, status: "not-booked" },
+          { seatNo: "ss5", isClicked: false, status: "booked" },
+          { seatNo: "ss6", isClicked: false, status: "not-booked" },
+          { seatNo: "ss7", isClicked: false, status: "booked" },
+          { seatNo: "ss8", isClicked: false, status: "booked" },
+          { seatNo: "ss9", isClicked: false, status: "booked" },
+          { seatNo: "ss10", isClicked: false, status: "not-booked" },
+          { seatNo: "ss11", isClicked: false, status: "booked" },
+          { seatNo: "ss12", isClicked: false, status: "booked" },
+          { seatNo: "ss13", isClicked: false, status: "booked" },
+          { seatNo: "ss14", isClicked: false, status: "booked" },
+          { seatNo: "ss15", isClicked: false, status: "booked" },
+          { seatNo: "ss16", isClicked: false, status: "not-booked" },
+          { seatNo: "ss17", isClicked: false, status: "booked" },
+          { seatNo: "ss18", isClicked: false, status: "booked" },
+          { seatNo: "ss19", isClicked: false, status: "booked" },
+          { seatNo: "ss20", isClicked: false, status: "booked" },
+          { seatNo: "ss21", isClicked: false, status: "booked" },
+          { seatNo: "ss22", isClicked: false, status: "booked" },
+          { seatNo: "ss23", isClicked: false, status: "booked" },
+          { seatNo: "ss24", isClicked: false, status: "booked" },
+          { seatNo: "ss25", isClicked: false, status: "booked" },
+          { seatNo: "ss26", isClicked: false, status: "booked" },
+          { seatNo: "ss27", isClicked: false, status: "not-booked" },
+          { seatNo: "ss28", isClicked: false, status: "booked" },
+          { seatNo: "ss29", isClicked: false, status: "booked" },
+          { seatNo: "ss30", isClicked: false, status: "booked" },
+          { seatNo: "ss31", isClicked: false, status: "booked" },
+          { seatNo: "ss32", isClicked: false, status: "booked" },
+        ],
+      },
+    ]
+  };
 
-        function initialColoringSeats() {
-          // iterate through seatDeatails list and color seat elements accordingly
-          for (let i = 0; i < seatDetails.length; i++) {
-            let seat = seatDetails[i];
-            //console.log(seat.seatNo);
-            if (seat.status == "booked") {
-              //color red -> booked seats
-              let seatObj = document.getElementById(seat.seatNo);
-              seatObj.style.backgroundColor = "red";
-            }
-          }
-        }
-        initialColoringSeats();
+    };
+  </script>
 
-        //event-listners for all "seat" elements
-        const allSeats = document.getElementsByClassName("seat");
-
-        for (let i = 0; i < allSeats.length; i++) {
-          allSeats[i].addEventListener("click", function () {
-            seatManager(allSeats[i].id);
-          });
-        }
-
-        function seatManager(seatId){
-          //check status and change seatDeatais list accordingly
-          for (let i = 0; i < seatDetails.length; i++) {
-            let seat = seatDetails[i];
-            if (seat.seatNo == seatId && !seat.isClicked && seat.status == "not-booked") {
-              //not clicked, not-booked seats
-              let seatObj = document.getElementById(seat.seatNo);
-              seatObj.style.backgroundColor = "blue";
-              seat.isClicked = true;
-              seat.status = "booked";
-              selectedSeatDataSaver(seatId); //pass seat ID to save
-              return;
-            }
-            if(seat.seatNo == seatId && seat.status == "booked" && !seat.isClicked){
-              //isClicked = false & booked <-- these are already booked red seats
-              alert("Sorry! seat is booked");
-              return;
-            }
-            if(seat.seatNo == seatId && seat.status == "booked" && seat.isClicked){
-              // isclicked = ture & booked <-- these are user clicked elements
-              //status change back to original status since user click them again
-              let seatObj = document.getElementById(seat.seatNo);
-              seatObj.style.backgroundColor = "aqua";
-              seat.isClicked = false;
-              seat.status = "not-booked";
-              selectedSeatDataSaver(seatId); //pass seat ID to remove from saved data
-              return;
-            }
-          }
-        }
-
-        selectedSeats = [];
-        function selectedSeatDataSaver(seatId){
-          if(!selectedSeats.includes(seatId)){
-            console.log(seatId +" is recorded");
-            selectedSeats.push(seatId);
-            selectedSeatIndicator(selectedSeats);
-            return;
-          }
-          if(selectedSeats.includes(seatId)){
-            for(let i = 0; i < selectedSeats.length; i++){
-              if(selectedSeats[i] == seatId){
-                console.log(seatId+" is deleted");
-                selectedSeats.splice(i, 1);
-                selectedSeatIndicator(selectedSeats);
-                return;
-              }
-            }
-          }
-        }
-
-        function selectedSeatIndicator(selectedSeats){
-          selectedSeats.sort((a, b) => a.localeCompare(b, undefined, { numeric: true })); // magic sort()
-          seatNames = "Selected Seats : "
-          for(let i = 0; i < selectedSeats.length; i++){
-            seatNames += " "+ selectedSeats[i];
-          }
-          console.log("selected all seats >> "+seatNames);
-
-          let selectedObj = document.getElementById("selectedSeats");
-          selectedObj.innerHTML = seatNames;
-          let selectedObj2 = document.getElementById("numberOfSeats");
-          selectedObj2.innerHTML = "Number of Seats :" + selectedSeats.length;
-          let selectedObj3 = document.getElementById("totalCost");
-          selectedObj3.innerHTML = "Total cost : " + selectedSeats.length * 100;  // ticket price is 100$
-
-        }
-
-      };
-    </script>
-
-   <!-- <script src="bootstrap/bootstrap.js"></script>  -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="fa-solid fa-paper-plane"></i>
-            COMPANY NAME</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.html"> <!-- ****icon link goes here**** </i>-->Home</a> 
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="login.html"><!-- ****icon link goes here****</i>-->Login</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="ticketing.html"><!-- ****icon link goes here****</i>-->Tickets</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link last-child" href="contactUs.html" ><!-- ****icon link goes here****</i>-->Contact Us</a>
-                  </li>
-                </ul> 
-              </div>
-        </div>
-    </nav>
-
-    <div class="search header">
-      <h2>
-        text goes here
-      </h2>
+  <!-- <script src="bootstrap/bootstrap.js"></script>  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-paper-plane"></i>
+        COMPANY NAME</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html"> <!-- ****icon link goes here**** </i>-->Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><!-- ****icon link goes here****</i>-->Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="ticketing.html"><!-- ****icon link goes here****</i>-->Tickets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link last-child" href="contactUs.html"><!-- ****icon link goes here****</i>-->Contact Us</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    
-    
-    <section class="search-bar pt-5">
-      <div class="container search">
-        <div class="row ">
-          <div class="col text-center ">
-            <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search Start" title="Type in a category">
-    
-            <ul id="myMenu">
-              <li><a href="#">startingz_1</a></li>
-              <li><a href="#">startingx_2</a></li>
-              <li><a href="#">startingy_3</a></li>
-              <li><a href="#">starting_4</a></li>
-              <li><a href="#">starting_5</a></li>
-              <li><a href="#">starting_6</a></li>
-            </ul>
-          </div>
-        
-    
-          <div class="col  text-center ">
-            <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search Destinations" title="Type in a category">
-    
-            <ul id="myMenu">
-              <li><a href="#">destination_1</a></li>
-              <li><a href="#">destination_2</a></li>
-              <li><a href="#">destination_3</a></li>
-              <li><a href="#">destination_4</a></li>
-              <li><a href="#">destination_5</a></li>
-              <li><a href="#">destination_6</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    
+  </nav>
 
-    <section  class="mt-5 pb-5">
-      <div class="container ">
-        <div class="row card-row">
-          <div class="col-sm-4">
-            <div class="card text-center pt-3" >
-              <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-sm-4 ">
-            <div class="card text-center pt-3">
-              <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-sm-4">
-            <div class="card text-center pt-3">
-              <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
+
+  <div class="content justify-content-center">
+    <div class="wholeBus">
+      <!--bus seat structure -->
+      <div class="leftSide sides">
+        <div class="seatRaw">
+          <div class="seat" id="s1"></div>
+          <div class="seat" id="s2"></div>
         </div>
-        <div class="row card-row">
-          <div class="col-sm-4">
-            <div class="card text-center pt-3" >
-              <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-sm-4 ">
-            <div class="card text-center pt-3">
-              <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-sm-4">
-            <div class="card text-center pt-3">
-              <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
+        <div class="seatRaw">
+          <div class="seat" id="s5"></div>
+          <div class="seat" id="s6"></div>
         </div>
-      </div>
-      </section>
-    
-      <div class="content justify-content-center">
-        <div class="wholeBus">
-          <!--bus seat structure -->
-          <div class="leftSide sides">
-            <div class="seatRaw">
-              <div class="seat" id="s1"></div>
-              <div class="seat" id="s2"></div>
-            </div>
-            <div class="seatRaw">
-              <div class="seat" id="s5"></div>
-              <div class="seat" id="s6"></div>
-            </div>
-            <div class="seatRaw">
-              <div class="seat" id="s9"></div>
-              <div class="seat" id="s10"></div>
-            </div>
-            <div class="seatRaw">
-              <div class="seat" id="s13"></div>
-              <div class="seat" id="s14"></div>
-            </div>
-          </div>
-  
-          <div class="rightSide sides">
-            <div class="seatRaw">
-              <div class="seat" id="s3"></div>
-              <div class="seat" id="s4"></div>
-            </div>
-            <div class="seatRaw">
-              <div class="seat" id="s7"></div>
-              <div class="seat" id="s8"></div>
-            </div>
-            <div class="seatRaw">
-              <div class="seat" id="s11"></div>
-              <div class="seat" id="s12"></div>
-            </div>
-            <div class="seatRaw">
-              <div class="seat" id="s15"></div>
-              <div class="seat" id="s16"></div>
-            </div>
-          </div>
+        <div class="seatRaw">
+          <div class="seat" id="s9"></div>
+          <div class="seat" id="s10"></div>
         </div>
-        <div class="text">
-          <!-- text area -->
-          <h1>Select Your Seat</h1>
-          <h3 id="selectedSeats">Seat number :</h3>
-          <h3 id="numberOfSeats">Total :</h3>
-          <h3 id="totalCost">total</h3>
+        <div class="seatRaw">
+          <div class="seat" id="s13"></div>
+          <div class="seat" id="s14"></div>
         </div>
       </div>
 
-      <section id="footer">
-        <div class="container">
-          <footer class="py-5 my-4 end-footer">
-            <ul class="nav justify-content-center pb-3 mb-3 borders" >
-              <li class="nav-item foot-items"><a href="index.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-house"></i>Home</a></li>
-              <li class="nav-item foot-items"><a href="login.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-viruses"></i>Log In</a></li>
-              <li class="nav-item foot-items"><a href="destinations.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-money-check-dollar"></i>Destinations</a></li>
-              <li class="nav-item foot-items"><a href="contactUs.html" class="nav-link foot-link text-center"><i class="fa-solid footer-icon  fa-circle-info"></i>Contact Us</a></li>
-            </ul>
-            <p class="text-center copyrights">
-              Copyright 2023 BookYourExpress. All rights reserved 
-              <i class="fa-regular fa-copyright"></i>  <br> BookYourExpress.lk is not responsible for any schedule changes, delays, or cancellations due to unforeseen circumstances.   
-            </p>
-          </footer>
+      <div class="rightSide sides">
+        <div class="seatRaw">
+          <div class="seat" id="s3"></div>
+          <div class="seat" id="s4"></div>
         </div>
-      </section>
+        <div class="seatRaw">
+          <div class="seat" id="s7"></div>
+          <div class="seat" id="s8"></div>
+        </div>
+        <div class="seatRaw">
+          <div class="seat" id="s11"></div>
+          <div class="seat" id="s12"></div>
+        </div>
+        <div class="seatRaw">
+          <div class="seat" id="s15"></div>
+          <div class="seat" id="s16"></div>
+        </div>
+      </div>
+    </div>
+    <div class="text">
+      <!-- text area -->
+      <h1 id="test">Select Your Seat</h1>
+      <h3 id="selectedSeats">Seat number :</h3>
+      <h3 id="numberOfSeats">Total :</h3>
+      <h3 id="totalCost">total</h3>
+    </div>
+  </div>
+
+  <!-- ========================== BODY - Start ========================================= -->
+  <!-- styles are present at the style.css  -->
+
+  <div id="container" class="flex-column">
+    <!-- whole thing is in this div  -->
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< select route +Start >>>>>>>>>>>>>>>>>>>>> -->
+    <div id="sub-container-slect-route" class="sub-container flex-row">
+      <!-- start, destination, date select, search from here  -->
+      <div id="select-route-start" class="select-route flex-row">
+        <p>Start:</p>
+        <select name="start" id="route-start">
+          <option value="kandy">Kandy</option>
+          <option value="jaffna">Jaffna</option>
+        </select>
+      </div>
+      <div id="select-route-end" class="select-route flex-row">
+        <p>Destination:</p>
+        <select name="end" id="route-end">
+          <option value="galle">Galle</option>
+          <option value="colombo">Colombo</option>
+        </select>
+      </div>
+      <div id="select-route-date" class="select-route flex-row">
+        <p>Date:</p>
+        <input type="date" name="date" id="travel-date" min="today">
+      </div>
+      <div id="select-route-search" class="select-route">
+        <p class="p">Search</p>
+      </div>
+    </div>
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< select route +End >>>>>>>>>>>>>>>>>>>>> -->
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< bus-details-select secion START  >>>>>>>>>>>>>>>>>>>>> -->
+    <div id="sub-container-bus-details" class="sub-container flex-row">
+      <!-- available bus details  -->
+      <div id="bus-details-box-1" class="bus-details-sections">
+        <!-- bus 1 -->
+        <div id="select-bus-1-name" class="bus-name">
+          <!-- name of the bus  -->
+          <p id="bus-1-name">Lorem Ipsum Dolor</p>
+        </div>
+        <div id="select-bus-1-details" class="flex-row bus-details">
+          <!-- details of the bus  -->
+          <div class="flex-column texts">
+            <p class="bus-detail-p">Start</p>
+            <p class="bus-detail-p">End</p>
+            <p class="bus-detail-p">Status</p>
+            <p class="bus-detail-p">Total Seats</p>
+            <p class="bus-detail-p">Registration No</p>
+          </div>
+          <div class="flex-column">
+            <p id="bus-1-start" class="bus-detail-p">:- 7.40PM</p>
+            <p id="bus-1-end" class="bus-detail-p">:- 7.40PM</p>
+            <p id="bus-1-status" class="bus-detail-p">:- AC</p>
+            <p id="bus-1-totalSeats" class="bus-detail-p">:- 32</p>
+            <p id="bus-1-regNumber" class="bus-detail-p">:- NA 1212</p>
+          </div>
+
+        </div>
+        <div id="select-bus-1-select" class="">
+          <p id="bus-1-select-button" class="bus-select-button">SELECT</p>
+        </div>
+      </div>
+      <div id="bus-details-box-2" class="bus-details-sections">
+        <!-- bus 2 -->
+        <div id="select-bus-2-name" class="bus-name">
+          <!-- name of the bus  -->
+          <p id="bus-2-name">Lorem Ipsum Dolor</p>
+        </div>
+        <div id="select-bus-2-details" class="flex-row bus-details">
+          <!-- details of the bus  -->
+          <div class="flex-column texts">
+            <p class="bus-detail-p">Start</p>
+            <p class="bus-detail-p">End</p>
+            <p class="bus-detail-p">Status</p>
+            <p class="bus-detail-p">Total Seats</p>
+            <p class="bus-detail-p">Registration No</p>
+          </div>
+          <div class="flex-column">
+            <p id="bus-2-start" class="bus-detail-p">:- 7.40PM</p>
+            <p id="bus-2-end" class="bus-detail-p">:- 7.40PM</p>
+            <p id="bus-2-status" class="bus-detail-p">:- AC</p>
+            <p id="bus-2-totalSeats" class="bus-detail-p">:- 32</p>
+            <p id="bus-2-regNumber" class="bus-detail-p">:- NA 1212</p>
+          </div>
+
+        </div>
+        <div id="select-bus-1-select" class="">
+          <p id="bus-2-select-button" class="bus-select-button">SELECT</p>
+        </div>
+      </div>
+      <div id="bus-details-box-3" class="bus-details-sections">
+        <!-- bus 3 -->
+        <div id="select-bus-3-name" class="bus-name">
+          <!-- name of the bus  -->
+          <p id="bus-3-name">Lorem Ipsum Dolor</p>
+        </div>
+        <div id="select-bus-3-details" class="flex-row bus-details">
+          <!-- details of the bus  -->
+          <div class="flex-column texts">
+            <p class="bus-detail-p">Start</p>
+            <p class="bus-detail-p">End</p>
+            <p class="bus-detail-p">Status</p>
+            <p class="bus-detail-p">Total Seats</p>
+            <p class="bus-detail-p">Registration No</p>
+          </div>
+          <div class="flex-column">
+            <p id="bus-3-start" class="bus-detail-p">:- 7.40PM</p>
+            <p id="bus-3-end" class="bus-detail-p">:- 7.40PM</p>
+            <p id="bus-3-status" class="bus-detail-p">:- AC</p>
+            <p id="bus-3-totalSeats" class="bus-detail-p">:- 32</p>
+            <p id="bus-3-regNumber" class="bus-detail-p">:- NA 1212</p>
+          </div>
+
+        </div>
+        <div id="select-bus-1-select" class="">
+          <p id="bus-3-select-button" class="bus-select-button">SELECT</p>
+        </div>
+      </div>
+    </div>
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< bus-details-select secion END  >>>>>>>>>>>>>>>>>>>>> -->
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< whole-bus START  >>>>>>>>>>>>>>>>>>>>> -->
+    <div id="sub-container-whole-bus" class="sub-container flex-row">
+      <!-- bus structure and selected bus seat details here  -->
+      <div id="bus-seat-structure" class="flex-column">
+        <!--  ############  52 ####################-->
+        <div id="seat52" class="seat32-and-seat52">
+          <!-- seat 52 structure -->
+          <div class="rows instruction-select-seats">
+            <!-- row 0 -->
+            <p>Select Your Seats</p>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 1 -->
+            <div id="s1" class="seat box"></div>
+            <div id="s2" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s3" class="seat box"></div>
+            <div id="s4" class="seat box"></div>
+            <div id="s5" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 2 -->
+            <div id="s6" class="seat box"></div>
+            <div id="s7" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s8" class="seat box"></div>
+            <div id="s9" class="seat box"></div>
+            <div id="s10" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 3 -->
+            <div id="s11" class="seat box"></div>
+            <div id="s12" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s13" class="seat box"></div>
+            <div id="s14" class="seat box"></div>
+            <div id="s15" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row  4-->
+            <div id="s16" class="seat box"></div>
+            <div id="s17" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s18" class="seat box"></div>
+            <div id="s19" class="seat box"></div>
+            <div id="s20" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 5 -->
+            <div id="s21" class="seat box"></div>
+            <div id="s22" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s23" class="seat box"></div>
+            <div id="s24" class="seat box"></div>
+            <div id="s25" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 6 -->
+            <div id="s26" class="seat box"></div>
+            <div id="s27" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s28" class="seat box"></div>
+            <div id="s29" class="seat box"></div>
+            <div id="s30" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 7 -->
+            <div id="s31" class="seat box"></div>
+            <div id="s32" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s33" class="seat box"></div>
+            <div id="s34" class="seat box"></div>
+            <div id="s35" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 8 -->
+            <div id="s36" class="seat box"></div>
+            <div id="s37" class="seat box"></div>
+            <div class="box"></div>
+            <div id="s38" class="seat box"></div>
+            <div id="s39" class="seat box"></div>
+            <div id="s40" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 9 -->
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="s41" class="seat box"></div>
+            <div id="s42" class="seat box"></div>
+            <div id="s43" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 10 -->
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="s44" class="seat box"></div>
+            <div id="s44" class="seat box"></div>
+            <div id="s46" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 11 -->
+            <div id="s47" class="seat box"></div>
+            <div id="s48" class="seat box"></div>
+            <div id="s49" class="seat box"></div>
+            <div id="s50" class="seat box"></div>
+            <div id="s51" class="seat box"></div>
+            <div id="s52" class="seat box"></div>
+          </div>
+        </div>
+        <!--  ############  32 ####################-->
+        <div id="seat32" class="seat32-and-seat52">
+          <!-- seat 32 structure -->
+          <div class="rows instruction-select-seats">
+            <!-- row 0 -->
+            <p>Select Your Seats</p>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 1 -->
+            <div id="ss1" class="seat box"></div>
+            <div id="ss2" class="seat box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="ss3" class="seat box"></div>
+            <div id="ss4" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 2 -->
+            <div id="ssss5" class="seat box"></div>
+            <div id="ssss6" class="seat box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="ssss7" class="seat box"></div>
+            <div id="ssss8" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 3 -->
+            <div id="sss9" class="seat box"></div>
+            <div id="sss10" class="seat box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="sss11" class="seat box"></div>
+            <div id="sss12" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row  4-->
+            <div id="ss13" class="seat box"></div>
+            <div id="ss14" class="seat box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="ss15" class="seat box"></div>
+            <div id="ss16" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 5 -->
+            <div id="sss17" class="seat box"></div>
+            <div id="sss18" class="seat box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="sss19" class="seat box"></div>
+            <div id="sss20" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 6 -->
+            <div id="ss21" class="seat box"></div>
+            <div id="ss22" class="seat box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="ss23" class="seat box"></div>
+            <div id="ss24" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 7 -->
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div id="ss25" class="seat box"></div>
+            <div id="ss26" class="seat box"></div>
+          </div>
+          <div class="rows flex-row">
+            <!-- row 8 -->
+            <div id="ss27" class="seat box"></div>
+            <div id="ss28" class="seat box"></div>
+            <div id="ss29" class="seat box"></div>
+            <div id="ss30" class="seat box"></div>
+            <div id="ss31" class="seat box"></div>
+            <div id="ss32" class="seat box"></div>
+          </div>
+        </div>
+      </div>
+      <div id="bus-other-details" class="flex-column">
+
+      </div>
+    </div>
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< whole-bus END  >>>>>>>>>>>>>>>>>>>>> -->
+    
+
+    <div id="sub-container-notes" class="sub-container">
+      <!-- special notes  -->
+      Special notes
+    </div>
+  </div>
+
+  <!-- ========================== BODY - End ========================================= -->
+
+  <!-- #################### footer #################### -->
+
+  <section id="footer">
+    <div class="container">
+      <footer class="py-5 my-4 end-footer">
+        <ul class="nav justify-content-center pb-3 mb-3 borders">
+          <li class="nav-item foot-items"><a href="index.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon  fa-house"></i>Home</a></li>
+          <li class="nav-item foot-items"><a href="login.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon  fa-viruses"></i>Log In</a></li>
+          <li class="nav-item foot-items"><a href="destinations.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon  fa-money-check-dollar"></i>Destinations</a></li>
+          <li class="nav-item foot-items"><a href="contactUs.html" class="nav-link foot-link text-center"><i
+                class="fa-solid footer-icon  fa-circle-info"></i>Contact Us</a></li>
+        </ul>
+        <p class="text-center copyrights">
+          Copyright 2023 BookYourExpress. All rights reserved
+          <i class="fa-regular fa-copyright"></i> <br> BookYourExpress.lk is not responsible for any schedule changes,
+          delays, or cancellations due to unforeseen circumstances.
+        </p>
+      </footer>
+    </div>
+  </section>
 
 
 </body>
+
 </html>
