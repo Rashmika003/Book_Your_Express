@@ -257,7 +257,9 @@ select option {
 
 #payment-methods{
     border: 1px #f7e860 solid;
+    border-radius: 3vh;
     margin-top: 5vh;
+    height: 47vh;
 }
 
 #payment-header{
@@ -267,10 +269,61 @@ select option {
     text-align: center;
     justify-content: center;
     align-items: center;
-    border: 1px #607cf7 solid;
+    /* border: 1px #607cf7 solid; */
 
 }
 
+.payment-method-box{
+    /* border: 1px rgb(29, 253, 216) solid; */
+    height: 10vh;
+    width: 32vh;
+    margin-inline: 2vw;
+    margin-block: 1vh;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
+.payment-method-box:hover{
+    border: 5px #f7e860 solid;
+}
+
+#visa-logo{
+    background-image: url(resources/visa-logo.png);
+}
+
+#mastercard-logo{
+    background-image: url(resources/mastercard-logo.png);
+}
+
+#helapay-logo{
+    background-image: url(resources/hela-pay-logo.png);
+}
+
+#pay-at-bus{
+    background-image: url(resources/pay-at-bus.png);
+}
+
+#pay{
+    /* border: 1px #32e222 solid; */
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+
+}
+
+#pay-button{
+    font-size: 3vh;
+    margin-top: 2vh;
+    background-color: #ffc107;
+    height: 7vh;
+    width: 15vw;
+    padding-top: 1vh;
+    border-radius: 3vh;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
 
 /* @@@@@@@@@@@@@@@ payment-method end @@@@@@@@@@@@@@@@ */
