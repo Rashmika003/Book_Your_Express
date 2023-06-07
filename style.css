@@ -205,6 +205,12 @@ select option {
     border: 3px rgb(245, 218, 65) solid;
 
 }
+
+.seat-no{
+    text-align: center;
+    color: #002447;
+    font-weight: bold;
+}
 /* ***************** bus structure End ****************** */
 
 #sub-container-notes{
@@ -327,3 +333,43 @@ select option {
 }
 
 /* @@@@@@@@@@@@@@@ payment-method end @@@@@@@@@@@@@@@@ */
+
+
+/* ~~~~~~~~~~~~~~~~ refund policy Start ~~~~~~~~~~~~ */
+.policy-parent-box{
+    /* border: 1px #cfe222 solid; */
+    height: 15vh;
+    margin-block: 1vh;
+    /* margin: 5vh; */
+}
+
+#sub-container-notes{
+    height: 70vh;
+    /* border: 1px #f7e860 solid; */
+}
+
+#policy-header{
+    color: #e2d222;
+    padding-top: 1vh;
+    font-size: 5vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.policy{
+    color: #e2d222;
+    /* border: 1px #22cce2 solid; */
+    margin: 0;;
+    text-align: center;
+}
+
+.policy-discription{
+    color: white;
+    /* border: 1px #5522e2 solid; */
+    margin: 0;;
+    text-align: center;
+}
+
+/* ~~~~~~~~~~~~~~~~ refund policy End ~~~~~~~~~~~~ */

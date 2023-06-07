@@ -488,7 +488,7 @@
         Seats : 52,
         RegNumber : "NA-2020",
         SeatDetails : [
-          { seatNo: "s1", isClicked: false, status: "booked" },
+          { seatNo: "s1", isClicked: false, status: "not-booked" },
           { seatNo: "s2", isClicked: false, status: "not-booked" },
           { seatNo: "s3", isClicked: false, status: "booked" },
           { seatNo: "s4", isClicked: false, status: "not-booked" },
@@ -1388,8 +1388,12 @@
           </div>
           <div class="rows flex-row">
             <!-- row 1 -->
-            <div id="s1" class="seat box"></div>
-            <div id="s2" class="seat box"></div>
+            <div id="s1" class="seat box">
+              <p class="seat-no">s1</p>
+            </div>
+            <div id="s2" class="seat box">
+              <p class="seat-no">s2</p>
+            </div>
             <div class="box"></div>
             <div id="s3" class="seat box"></div>
             <div id="s4" class="seat box"></div>
@@ -1632,7 +1636,50 @@
 
     <div id="sub-container-notes" class="sub-container">
       <!-- special notes  -->
-      Special notes
+      <div id="policy-header" class="policy-parent-box">
+        <!-- topic -->
+        <p>Refund and Cancellation Policy</p>
+      </div>
+      <div class="policy-parent-box flex-column">
+        <!-- line 01 -->
+        <p class="policy">
+          1. Cancellation and Refunds:
+        </p>
+        <p class="policy-discription">
+          a. If you need to cancel your reservation, please notify us at least 24 hours prior to the scheduled departure time to be eligible for a refund. <br>
+          b. Cancellations made within 24 hours of the departure time will not be eligible for a refund.
+        </p>
+      </div>
+      <div class="policy-parent-box flex-column">
+        <!-- line 02 -->
+        <p class="policy">
+          2.Change of Reservation:
+        </p>
+        <p class="policy-discription">
+          a. Changes to your reservation, such as the date, time, or passenger details, are subject to availability. <br>
+          b. To make changes to your reservation, please contact our customer support team at least 24 hours before the scheduled departure time.
+        </p>
+      </div>
+      <div class="policy-parent-box flex-column">
+        <!-- line 03 -->
+        <p class="policy">
+          3.No-Show Policy:
+        </p>
+        <p class="policy-discription">
+          a. If you fail to board the bus without prior cancellation or notification, it will be considered a no-show. <br>
+          b. No-shows are non-refundable, and your seat will be released for other passengers after the departure time.
+        </p>
+      </div>
+      <div class="policy-parent-box flex-column">
+        <!-- line 04 -->
+        <p class="policy">
+          4.Service Interruptions:
+        </p>
+        <p class="policy-discription">
+          a. In the event of service interruptions, such as weather conditions or unforeseen circumstances, we reserve the right to modify or cancel scheduled departures. <br>
+          b. If your reservation is affected by a service interruption, we will make reasonable efforts to accommodate you on an alternative bus or provide a refund.
+        </p>
+      </div>
     </div>
   </div>
 
