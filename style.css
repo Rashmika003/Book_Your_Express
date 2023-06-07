@@ -199,6 +199,9 @@ select option {
     /* remove this color */
     background-color: aqua;
     border: 1px black solid;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 
 }
 .seat:hover{
@@ -210,6 +213,8 @@ select option {
     text-align: center;
     color: #002447;
     font-weight: bold;
+    margin-top: 1vh;
+    
 }
 /* ***************** bus structure End ****************** */
 
@@ -254,6 +259,10 @@ select option {
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+#selectedSeats{
+    overflow: hidden;
 }
 
 /* $$$$$$$$$$$$ bus-other-details end $$$$$$$$$$$$$$$$$ */
@@ -363,6 +372,7 @@ select option {
     /* border: 1px #22cce2 solid; */
     margin: 0;;
     text-align: center;
+    font-size: 3.3vh;
 }
 
 .policy-discription{
