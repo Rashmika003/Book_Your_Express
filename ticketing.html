@@ -21,6 +21,7 @@
         window.location.href = "index.html";
       }
     </script>
+    <script src="jsPDF.min.js"></script>
 
 </head>
 
@@ -408,11 +409,36 @@
         // $("#pay-at-bus").css("", "yellow");
         $("#pay").show();
       });
+      
+      const element = document.getElementById("pay");
+      element.addEventListener("click", myFunction);
 
-      $("#pay").click(function(){
-        // $("#pay-at-bus").css("", "yellow");
-        alert("Seats were booked! Thank you.");
-      });
+    function myFunction() {
+   
+
+    // Get the details of the ticket
+    var seat = document.getElementById("selectedSeats").innerHTML;
+    var num_of_seats = document.getElementById("numberOfSeats").innerHTML;
+    var cost_for_one = document.getElementById("costForSeat").innerHTML;
+    var total = document.getElementById("totalCost").innerHTML;
+
+    // Create a new PDF document
+    var pdf = new jsPDF();
+
+    // Add the details to the PDF document
+    pdf.text(30, 10, "Selected Seats: " + seat);
+    pdf.text(30, 20, "Number of Seats: " + num_of_seats);
+    pdf.text(30, 30, "Cost for a Ticket: " + cost_for_one);
+    pdf.text(30, 40, "Total Rs.: " + total);
+
+    // Save the PDF document
+    pdf.save("ticket.pdf");
+  };
+
+      // $("#pay").click(function(){
+      //   // $("#pay-at-bus").css("", "yellow");
+      //   alert("Seats were booked! Thank you.");
+      // });
 
 
 
@@ -1167,6 +1193,8 @@
   };
 
     };
+
+    
   </script>
 
   <!-- <script src="bootstrap/bootstrap.js"></script>  -->
@@ -1742,7 +1770,9 @@
           </div>
         </div>
       </div>
-      <div id="bus-other-details" class="flex-column">
+
+      <!-- /////////////////////// -->
+      <div id="bus-other-details" class="flex-column" style="border: 2px solid red;">
         <div id="selected-seat-details1" class="flex-column">
           <div id="selected-seats-header" class="">
             <p>Selected Seat Details</p>
@@ -1750,16 +1780,16 @@
           <div id="other-details" class="flex-row">
             <div id="other-details-text" class="seat-info">
               <div class="text text1">
-                <p>selected Seats</p>
+                <p id="seat">selected Seats</p>
               </div>
               <div class="text text1">
-                <p>number of seats</p>
+                <p id="num_of_shets">number of seats</p>
               </div>
               <div class="text text1">
-                <p>cost for a ticket</p>
+                <p id="cost_for_one">cost for a ticket</p>
               </div>
               <div class="text text1">
-                <p>total Rs.</p>
+                <p id="total">total Rs.</p>
               </div>
             </div>
             <div class="seat-info">
@@ -1799,8 +1829,11 @@
               <p>Book The Ticket</p>
             </div>
           </div>
+
         </div>
       </div>
+     
+      <!-- //////////////////// -->
     </div>
     <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< whole-bus END  >>>>>>>>>>>>>>>>>>>>> -->
     
@@ -1880,7 +1913,7 @@
     </div>
   </section>
 
-
+  
 </body>
 
 </html>
