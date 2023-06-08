@@ -16,7 +16,11 @@
   <title>Destinations</title>
   <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
     crossorigin="anonymous"></script>
-
+    <script>
+      function redirectToIndex() {
+        window.location.href = "index.html";
+      }
+    </script>
 
 </head>
 
@@ -1171,8 +1175,11 @@
     crossorigin="anonymous"></script>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><i class="fa-solid fa-paper-plane"></i>
-        COMPANY NAME</a>
+      <!-- <a class="navbar-brand" href="#"><i class="fa-solid fa-paper-plane"></i>
+        COMPANY NAME</a> -->
+        <div onclick="redirectToIndex()" class="complay-icon">
+          <!-- company icon -->
+        </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

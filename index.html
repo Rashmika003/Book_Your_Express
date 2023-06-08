@@ -10,14 +10,25 @@
     <link rel="stylesheet" href="CSS/bootstrap-additonal.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>index</title>
+    <script>
+      function redirectToLogin() {
+        window.location.href = "login.html";
+      }
+      function redirectToIndex() {
+        window.location.href = "index.html";
+      }
+    </script>
 </head>
 <body class="background">
    <!-- <script src="bootstrap/bootstrap.js"></script>  -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paper-plane"></i>
-            COMPANY NAME</a>
+            <!-- <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paper-plane"></i>
+            COMPANY NAME</a> -->
+            <div onclick="redirectToIndex()" class="complay-icon">
+              <!-- company icon -->
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -48,13 +59,13 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col">
-                        <h1 class="display-3 text-success head-title">
+                        <h1 id="header-title" class="display-3 text-success head-title">
                            BOOK YOUR EXPRESS  
                         </h1>
-                        <p class="head-para"> <strong>
+                        <p id="header-sub-title" class="head-para"> <strong>
                             Reserve your bus seat today. Enjoy a comfortable bus journey with easy online seat booking.
                         </strong></p>
-                        <a class="btn btn-success" href="#" role="button">Login button</a>
+                        <a class="btn btn-success" href="login.html" role="button">Login button</a>
                     </div>
                 </div>
             </div>
@@ -65,19 +76,19 @@
         <div class="container">
           <div class="row ">
             <div class="col text-center ">
-              <i class="fa-solid feature-icon fa-bowl-rice fa-4x"></i>
-              <h3 class="mt-3">Convenient Booking Process</h3>
+              <i class="fa-solid feature-icon fa-check-square fa-4x"></i>
+              <h3 class="mt-3 headers">Convenient Booking Process</h3>
               <p>Booking a bus seat is a breeze on our website. With a simple and user-friendly interface, customers can search for available seats, select their preferred seat, and complete the booking process in just a few clicks. Plus, our website saves passenger information for easy future bookings.</p>
             </div>
 
             <div class="col  text-center ">
-              <i class="fa-solid feature-icon fa-martini-glass-citrus fa-4x"></i>
-              <h3 class="mt-3">Safe and Secure Payments</h3>
+              <i class="fa-solid feature-icon fa-lock fa-4x"></i>
+              <h3 class="mt-3 headers">Safe and Secure Payments</h3>
               <p>Our website offers secure payment options to protect customers' payment information. We use SSL encryption to ensure confidentiality and offer multiple payment methods for convenience. Book your bus seat with confidence on our website.</p>
             </div>
             <div class="col text-center ">
-              <i class="fa-solid feature-icon fa-tree fa-4x"></i>
-              <h3 class="mt-3">Personalized Travel Experience</h3>
+              <i class="fa-solid feature-icon fa fa-suitcase fa-4x"></i>
+              <h3 class="mt-3 headers">Personalized Travel Experience</h3>
               <p>Experience a personalized and comfortable bus journey with our website. Our buses are equipped with additional amenities such as Wi-Fi, charging ports, and in-bus entertainment options to enhance the overall travel experience.</p>
             </div>
           </div>
@@ -92,27 +103,27 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="resources/slide-1.jpeg" class="d-block w-100 img-fluid carousel-img" alt="...">
+            <img src="resources/slide-1-1.png" class="d-block w-100 img-fluid carousel-img" alt="...">
             <!-- banner: Create a slideshow highlighting the unique benefits of booking with your bus company. This can include things like your commitment to safety, your comfortable and modern buses, your competitive pricing, your extensive route network, or your friendly and helpful customer service. Use engaging images and persuasive copy to showcase why your bus company is the best choice for travelers. -->
             <div class="carousel-caption d-none d-md-block">
-              <h5>Why Choose Us</h5>
-              <p>We take the safety of our passengers seriously, which is why our buses are equipped with comfortable seats, ample legroom, and air conditioning to ensure a safe and comfortable journey. Additionally, we offer competitive pricing, making bus travel accessible and affordable for everyone.</p>
+              <h5 class="slide-text2">Why Choose Us</h5>
+              <p class="slide-text2">We take the safety of our passengers seriously, which is why our buses are equipped with comfortable seats, ample legroom, and air conditioning to ensure a safe and comfortable journey. Additionally, we offer competitive pricing, making bus travel accessible and affordable for everyone.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="resources/bg.png" class="d-block w-100 img-fluid carousel-img" alt="...">
+            <img src="resources/slide-2.png" class="d-block w-100 img-fluid carousel-img" alt="...">
             <!-- Create a slideshow promoting holiday specials, deals, and discounts on bus tickets. This can be a great way to drive sales during peak travel seasons, and encourage users to book their bus tickets early to save money. Use festive images and bold, attention-grabbing copy to create a sense of urgency and excitement around your holiday promotions -->
             <div class="carousel-caption d-none d-md-block">
-              <h5>Holiday Specials</h5>
-              <p>Our "Holiday Specials" include special deals on bus tickets to popular holiday destinations such as Kandy, Galle, Yala National Park, and Nuwara Eliya. Additionally, our holiday specials feature family-friendly packages, with special discounts for children and group bookings, ensuring an affordable and enjoyable travel experience for the whole family. </p>
+              <h5 class="slide-text">Holiday Specials</h5>
+              <p class="slide-text">Our "Holiday Specials" include special deals on bus tickets to popular holiday destinations such as Kandy, Galle, Yala National Park, and Nuwara Eliya. Additionally, our holiday specials feature family-friendly packages, with special discounts for children and group bookings, ensuring an affordable and enjoyable travel experience for the whole family. </p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="resources/bg.png" class="d-block w-100 img-fluid carousel-img" alt="...">
+            <img src="resources/slide-3.png" class="d-block w-100 img-fluid carousel-img" alt="...">
             <!-- Create a slideshow promoting customer rewards and loyalty programs. Use images of happy customers and persuasive copy to encourage users to sign up for your loyalty program and earn rewards for booking with your bus company. This can help increase customer retention and generate repeat business. -->
             <div class="carousel-caption d-none d-md-block">
-              <h5>Customer Rewards</h5>
-              <p>As a member of our "Customer Rewards" program, every bus ticket booking earns points that can be redeemed for discounts on future bookings. Our loyalty program is designed to reward loyal customers with exclusive perks and benefits, including access to special offers and promotions not available to the public.</p>
+              <h5 class="slide-text2">Customer Rewards</h5>
+              <p class="slide-text2">As a member of our "Customer Rewards" program, every bus ticket booking earns points that can be redeemed for discounts on future bookings. Our loyalty program is designed to reward loyal customers with exclusive perks and benefits, including access to special offers and promotions not available to the public.</p>
             </div>
           </div>
         </div>
@@ -130,34 +141,16 @@
         <div class="container">
           <div class="row mt-5 ">
             <div class="col-md-12 text-center gy-5  text-success">
-              <h1>Login</h1>
+              <h1 >Login</h1>
               <p class="text-white">Already have an account? Login here.</p>
             </div>
             <div class="col-md-6 text-center mx-auto login-button">
-              <button type="button" name="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#firstModal">login</button>
+              <button onclick="redirectToLogin()" type="button" name="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#firstModal">login</button>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="login-popup">
-      <div id="firstModal" class="modal fade " role="dialog ">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header ">
-                <h4 class="modal-titles">login form details</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>login form details</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   
       <section id="cont">
         <div class="container">
@@ -176,12 +169,12 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3" >
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/colombo.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
                 <h5 class="card-title">Colombo</h5>
                 <p class="card-text">Colombo is the bustling center of Sri Lanka, with a variety of attractions and landmarks to explore.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <a href="https://en.wikipedia.org/wiki/Colombo" class="btn btn-primary">Learn More</a>
               </div>
             </div>
           </div>
@@ -189,12 +182,12 @@
           <div class="col-sm-4 ">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/kandy.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
                 <h5 class="card-title">Kandy</h5>
                 <p class="card-text">Kandy is known as the cultural capital of Sri Lanka, with a rich history and a plethora of cultural sites to explore. </p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <a href="https://en.wikipedia.org/wiki/Kandy" class="btn btn-primary">Learn More</a>
               </div>
             </div>
           </div>
@@ -202,12 +195,12 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/jaffna.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
                 <h5 class="card-title">Jaffna</h5>
                 <p class="card-text">Jaffna is known for its unique blend of Tamil and Sinhalese cultures, with a variety of cultural attractions to explore. </p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <a href="https://en.wikipedia.org/wiki/Jaffna" class="btn btn-primary">Learn More</a>
               </div>
             </div>
           </div>
