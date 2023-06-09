@@ -50,7 +50,7 @@
             <a class="nav-link" href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="ticketing.html"><!-- ****icon link goes here****</i>-->Book Tickets</a>
+            <a class="nav-link" href=""><!-- ****icon link goes here****</i>-->Book Tickets</a>
           </li>
           <li class="nav-item">
             <a class="nav-link last-child" href="contactUs.html"><!-- ****icon link goes here****</i>-->Contact Us</a>
@@ -169,7 +169,7 @@
       // this JQuery event selector check whether #fullName contains more then
       // 5 charactors , contains symbols and contains numbers
       // if symbol or number found in the input, then show() #FullNameError <p> tags
-      $("#fullName").blur(function () {
+      $("#fullName").keyup(function () {
         const fName = $(this).val();
         const symbols = "~!@#$%^&*()_+|?><,./`";
         const numbers = "1234567890";
@@ -219,7 +219,7 @@
       // this JQuery event selector check whether #userName contains
       // spaces or string length is greater than 5
       // if spaces found in the input, then show() #userNameError <p> tags
-      $("#userName").blur(function () {
+      $("#userName").keyup(function () {
         const fName = $(this).val();
         const symbols = "~!$%^&*()+|?><,./`"; //@#_ only allows
 
@@ -260,7 +260,7 @@
       // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< email >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
       // validation for email
-      $("#email").blur(function(){
+      $("#email").keyup(function(){
         const emailInput = $(this).val();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email validation regular expression
         
@@ -280,7 +280,7 @@
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< phone number >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     // validation for phone number
-    $("#phoneNumber").blur(function(){
+    $("#phoneNumber").keyup(function(){
       const pNumber = $(this).val();
       if(pNumber.length < 10){   //check length
         $("#phoneNoError1").text("phone number is short");
