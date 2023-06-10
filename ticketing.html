@@ -386,10 +386,16 @@
         var pdf = new window.jspdf.jsPDF();
 
         // Add the details to the PDF document
-        pdf.text(30, 10, "Selected Seats: " + seat);
-        pdf.text(30, 20, "Number of Seats: " + num_of_seats);
-        pdf.text(30, 30, "Cost for a Ticket: " + cost_for_one);
-        pdf.text(30, 40, "Total Rs.: " + total);
+        pdf.text(20,10,"========================================");
+        pdf.text(20,20,"===========Your express=================");
+        pdf.text(20,30,"========================================");
+        pdf.text(30,40, "Selected Seats: " + seat);
+        pdf.text(30,50, "Number of Seats: " + num_of_seats);
+        pdf.text(30,60, "Cost for a Ticket: " + cost_for_one);
+        pdf.text(30,70,"----------------------------------------");
+        pdf.text(30,80, "Total Rs.: " + total);
+        pdf.text(30,90,"----------------------------------------");
+        pdf.text(30,100,"Thank you! welcome.");
 
         // Save the PDF document
         pdf.save("ticket.pdf");
@@ -1686,7 +1692,7 @@
           </div>
           <div id="pay">
             <!-- pay button -->
-            <div id="pay-button">
+            <div id="pay-button-button">
               <p>Book The Ticket</p>
             </div>
           </div>
