@@ -10,14 +10,25 @@
     <link rel="stylesheet" href="CSS/bootstrap-additonal.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Destinations</title>
+    <script>
+      function redirectToIndex() {
+        window.location.href = "index.html";
+      }
+      function alertToLogin(){
+        alert("Please login First to Book Ticket");
+      };
+    </script>
 </head>
 <body class="background">
    <!-- <script src="bootstrap/bootstrap.js"></script>  -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="fa-solid fa-paper-plane"></i>
-            COMPANY NAME</a>
+            <!-- <a class="navbar-brand" href="#"><i class="fa-solid fa-paper-plane"></i>
+            COMPANY NAME</a> -->
+            <div onclick="redirectToIndex()" class="complay-icon">
+              <!-- company icon -->
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -32,8 +43,8 @@
                   <li class="nav-item">
                     <a class="nav-link active" href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="ticketing.html"><!-- ****icon link goes here****</i>-->Book Tickets</a>
+                  <li onclick="alertToLogin()" class="nav-item">
+                    <a class="nav-link" href=""><!-- ****icon link goes here****</i>-->Book Tickets</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link last-child" href="contactUs.html" ><!-- ****icon link goes here****</i>-->Contact Us</a>
@@ -50,15 +61,14 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3" >
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/colombo.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <h5 class="card-title">Colombo</h5>
+                <p class="card-text">The country's largest city in terms of population.
+                  Located on the west coast, it is a beautiful city surrounded by white sand beaches and an
+                  impressive harbourfront.</p>
+                <a href="" class="btn btn-primary">Learn More</a>
               </div>
             </div>
           </div>
@@ -66,14 +76,12 @@
           <div class="col-sm-4 ">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/kandy.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Kandy</h5>
+                <p class="card-text">Cultural capital of Sri Lanka, nestled in the central highlands, famous for its
+                  historic charm, scenic beauty, and the revered Temple of the Tooth.</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -82,14 +90,12 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/jaffna.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Jaffna</h5>
+                <p class="card-text">Jaffna is known for its unique blend of Tamil and Sinhalese cultures, 
+                  with a variety of cultural attractions to explore.It rich Tamil heritage, historical sites</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -99,14 +105,12 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3" >
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/galle.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Galle</h5>
+                <p class="card-text">Coastal city in Sri Lanka famous for its Dutch colonial architecture, historic fort,
+                  and beautiful beaches.</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -115,14 +119,12 @@
           <div class="col-sm-4 ">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/anuradhapura.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Anuradhapura</h5>
+                <p class="card-text">Ancient city in Sri Lanka, UNESCO World Heritage Site, renowned for its
+                  ancient Buddhist ruins and sacred sites.</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -131,14 +133,12 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/trinkomale.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Trincomalee</h5>
+                <p class="card-text">Coastal city in Sri Lanka, known for its stunning beaches, picturesque
+                  harbor, and historical significance as a trading port.</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -148,14 +148,12 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3" >
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/nuwara-eliya.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Nuwara Eliya</h5>
+                <p class="card-text">Enchanting hill station in Sri Lanka, nestled in the misty central
+                  highlands, renowned for its tea plantations, cool climate, and stunning vistas.</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -164,14 +162,12 @@
           <div class="col-sm-4 ">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/matale.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Matale</h5>
+                <p class="card-text">Picturesque town in the central region of Sri Lanka, known for its lush green
+                  landscapes, spice gardens, and historical sites like Aluvihare Rock Temple</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -180,14 +176,12 @@
           <div class="col-sm-4">
             <div class="card text-center pt-3">
               <div class="card-img">
-                <img src="resources/bg.png" class="card-img-top img-fluid my-3" alt="..." >
+                <img src="resources/kurunegala.png" class="card-img-top img-fluid my-3" alt="..." >
               </div>
               <div class="card-body">
-                <h5 class="card-title">lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.</p>
+                <h5 class="card-title">Kurunegala</h5>
+                <p class="card-text">Vibrant city in Sri Lanka's North Western Province, famous for its ancient
+                  rock fortress, Ridi Vihara temple, and bustling markets.</p>
                 <a href="#" class="btn btn-primary">Learn More</a>
               </div>
             </div>

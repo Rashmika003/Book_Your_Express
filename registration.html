@@ -15,7 +15,14 @@
   <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
     crossorigin="anonymous"></script>
   <!-- jquery-3 -->
-  
+  <script>
+    function redirectToIndex() {
+      window.location.href = "index.html";
+    }
+    function alertToLogin(){
+        alert("Please login First to Book Ticket");
+    };
+  </script>
   <title>Register</title>
 
 </head>
@@ -25,7 +32,10 @@
 
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paper-plane"></i> COMPANY NAME</a>
+      <!-- <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paper-plane"></i> COMPANY NAME</a> -->
+      <div onclick="redirectToIndex()" class="complay-icon">
+        <!-- company icon -->
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,8 +52,8 @@
           <li class="nav-item">
             <a class="nav-link" href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ticketing.html"><!-- ****icon link goes here****</i>-->Book Tickets</a>
+          <li onclick="alertToLogin()" class="nav-item">
+            <a class="nav-link" href=""><!-- ****icon link goes here****</i>-->Book Tickets</a>
           </li>
           <li class="nav-item">
             <a class="nav-link last-child" href="contactUs.html"><!-- ****icon link goes here****</i>-->Contact Us</a>
@@ -162,7 +172,7 @@
       // this JQuery event selector check whether #fullName contains more then
       // 5 charactors , contains symbols and contains numbers
       // if symbol or number found in the input, then show() #FullNameError <p> tags
-      $("#fullName").blur(function () {
+      $("#fullName").keyup(function () {
         const fName = $(this).val();
         const symbols = "~!@#$%^&*()_+|?><,./`";
         const numbers = "1234567890";
@@ -212,7 +222,7 @@
       // this JQuery event selector check whether #userName contains
       // spaces or string length is greater than 5
       // if spaces found in the input, then show() #userNameError <p> tags
-      $("#userName").blur(function () {
+      $("#userName").keyup(function () {
         const fName = $(this).val();
         const symbols = "~!$%^&*()+|?><,./`"; //@#_ only allows
 
@@ -253,7 +263,7 @@
       // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< email >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
       // validation for email
-      $("#email").blur(function(){
+      $("#email").keyup(function(){
         const emailInput = $(this).val();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email validation regular expression
         
@@ -273,7 +283,7 @@
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< phone number >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     // validation for phone number
-    $("#phoneNumber").blur(function(){
+    $("#phoneNumber").keyup(function(){
       const pNumber = $(this).val();
       if(pNumber.length < 10){   //check length
         $("#phoneNoError1").text("phone number is short");

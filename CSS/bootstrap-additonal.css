@@ -15,6 +15,17 @@
     color: #051821 !important;
 }
 
+.complay-icon{
+    /* border: red 1px solid; */
+    width: 17vw;
+    height: 7vh;
+    background-image: url(../resources/company-logo2.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
 
 .nav-link{ 
     font-size: 20px !important;
@@ -28,20 +39,26 @@
 
 
 #header{
-    background: url(../resources/background-index-top.png);
+    background: url(../resources/wallpaper-new.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
 }
 
-.head-title{
+#header-title{
     padding-top: 50px;
+    color: #051821 !important;
+    font-weight: bold;
 }
 
 .head-para{
     padding-top: 50px;
     padding-bottom: 30px;
     color: #f58800;
+}
+
+.headers{
+    color: #f58800 !important;
 }
 
 .feature{
@@ -149,3 +166,24 @@
 #myMenu{
     list-style: none;
 }
+
+.slide-text{
+    color: white;
+}
+
+.slide-text2{
+    color: black;
+}
+
+#icon-right{
+    background-image: url(resources/icon-right.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* #header-title{
+    background-color: #051821;
+    
+
+} */
