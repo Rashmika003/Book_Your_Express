@@ -67,6 +67,17 @@
       let selectedRoute = null;
       let selectedBus = null;
 
+      // hide bus details section when user change the route
+      $("#route-start").change(function(){
+        $("#sub-container-bus-details").hide();
+        $("#sub-container-whole-bus").hide();
+      });
+       // hide bus details section when user change the route
+      $("#route-end").change(function(){
+        $("#sub-container-bus-details").hide();
+        $("#sub-container-whole-bus").hide();
+      });
+
       // click search button 
       $("#select-route-search").click(function () {
         let start = $("#route-start").val();
