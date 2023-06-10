@@ -386,16 +386,21 @@
         var pdf = new window.jspdf.jsPDF();
 
         // Add the details to the PDF document
-        pdf.text(20,10,"========================================");
-        pdf.text(20,20,"===========Your express=================");
-        pdf.text(20,30,"========================================");
-        pdf.text(30,40, "Selected Seats: " + seat);
-        pdf.text(30,50, "Number of Seats: " + num_of_seats);
-        pdf.text(30,60, "Cost for a Ticket: " + cost_for_one);
-        pdf.text(30,70,"----------------------------------------");
-        pdf.text(30,80, "Total Rs.: " + total);
-        pdf.text(30,90,"----------------------------------------");
-        pdf.text(30,100,"Thank you! welcome.");
+        pdf.text(20,10,"+======================================+");
+        pdf.text(20,20," ===========  Book Your express  ===========");
+        pdf.text(20,30,"+======================================+");
+        pdf.text(30,40, "Bus Name          : " + selectedBus.busName);
+        pdf.text(30,50, "Registration No  : " + selectedBus.RegNumber);
+        pdf.text(30,60, "Start Time          : " + selectedBus.StartTime);
+        pdf.text(30,70, "End Time           : " + selectedBus.EndTime);
+        pdf.text(30,80, "Selected Seats   : " + seat);
+        pdf.text(30,90, "Number of Seats: " + num_of_seats);
+        pdf.text(30,100, "Cost for a Ticket : " + cost_for_one);
+        pdf.text(20,110,"+======================================+");
+        pdf.text(30,120, "Total Rs.: " + total);
+        pdf.text(20,130,"+======================================+");
+        pdf.text(30,140,"         contact : +94 71xxxxxxx");
+        pdf.text(30,150,"           Thank you! welcome.");
 
         // Save the PDF document
         pdf.save("ticket.pdf");
@@ -1692,7 +1697,7 @@
           </div>
           <div id="pay">
             <!-- pay button -->
-            <div id="pay-button-button">
+            <div id="pay-button">
               <p>Book The Ticket</p>
             </div>
           </div>

@@ -17,6 +17,9 @@
       function redirectToIndex() {
         window.location.href = "index.html";
       }
+      function alertToLogin(){
+        alert("Please login First to Book Ticket");
+      };
     </script>
 </head>
 <body class="background">
@@ -43,8 +46,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href="destinations.html"><!-- ****icon link goes here****</i>-->Destinations</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="ticketing.html"><!-- ****icon link goes here****</i>-->Book Tickets</a>
+                  <li onclick="alertToLogin()" class="nav-item">
+                    <a class="nav-link" href=""><!-- ****icon link goes here****</i>-->Book Tickets</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link last-child" href="contactUs.html" ><!-- ****icon link goes here****</i>-->Contact Us</a>
